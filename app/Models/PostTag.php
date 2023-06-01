@@ -15,7 +15,7 @@ use Drewlabs\PHPValue\Contracts\Adaptable;
 use Drewlabs\Query\Contracts\Queryable as AbstractQueryable;
 use Illuminate\Database\Eloquent\Model;
 use Drewlabs\Laravel\Query\Traits\Queryable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class PostTag extends Model implements AbstractQueryable, Adaptable
 {
@@ -60,8 +60,8 @@ final class PostTag extends Model implements AbstractQueryable, Adaptable
 	 * @var array
 	 */
 	public $relation_methods = [
-		'posts',
-		'tags',
+		'post',
+		'tag',
 	];
 
 	/**
@@ -79,23 +79,79 @@ final class PostTag extends Model implements AbstractQueryable, Adaptable
 	public $timestamps = false;
 
 	/**
+	 * returns an eloquent `belongs to` relation
+	 * 
 	 *
-	 * @return HasMany
+	 * @return BelongsTo
 	 */
-	public function posts()
+	public function post()
 	{
 		# code...
-		return $this->hasMany(\App\Models\Post::class, 'id', 'post_id');
+		return $this->belongsTo(\App\Models\Post::class, 'post_id', 'id');
 	}
 
 	/**
+	 * returns an eloquent `belongs to` relation
+	 * 
 	 *
-	 * @return HasMany
+	 * @return BelongsTo
 	 */
-	public function tags()
+	public function tag()
 	{
 		# code...
-		return $this->hasMany(\App\Models\Tag::class, 'id', 'tag_id');
+		return $this->belongsTo(\App\Models\Tag::class, 'tag_id', 'id');
+	}
+
+	/**
+	 * Set `post_id` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setPostId($value)
+	{
+		# code...
+		$this->setAttribute('post_id', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `post_id` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getPostId()
+	{
+		# code...
+		return $this->getAttribute('post_id');
+	}
+
+	/**
+	 * Set `tag_id` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setTagId($value)
+	{
+		# code...
+		$this->setAttribute('tag_id', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `tag_id` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getTagId()
+	{
+		# code...
+		return $this->getAttribute('tag_id');
 	}
 
 	/**

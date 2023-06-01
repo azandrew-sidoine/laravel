@@ -71,7 +71,7 @@ final class PostViewModel implements AbstractViewModel
 	{
 		# code...
 		return [
-			'id' => ['sometimes', 'exists:posts,id', 'integer', 'exists:post_tags,post_id'],
+			'id' => ['sometimes', 'exists:posts,id', 'integer'],
 			'type_id' => ['required_without:id', 'exists:post_types,id'],
 			'title' => ['required_without:id', 'string', 'max:255'],
 			'content' => ['required_without:id', 'string', 'max:65535'],
@@ -102,7 +102,7 @@ final class PostViewModel implements AbstractViewModel
 	{
 		# code...
 		return [
-			'id' => ['sometimes', 'exists:posts,id', 'integer', 'exists:post_tags,post_id'],
+			'id' => ['sometimes', 'exists:posts,id', 'integer'],
 			'type_id' => ['sometimes', 'exists:post_types,id'],
 			'title' => ['sometimes', 'string', 'max:255'],
 			'content' => ['sometimes', 'string', 'max:65535'],
@@ -124,7 +124,7 @@ final class PostViewModel implements AbstractViewModel
 	}
 
 	/**
-	 * returns the list of queried columns from current instance
+	 * returns the list of queried columns
 	 * 
 	 *
 	 * @return array
@@ -132,7 +132,19 @@ final class PostViewModel implements AbstractViewModel
 	public function getColumns()
 	{
 		# code...
-		return $this->has('_columns') ? (is_array($columns_ = $this->get('_columns')) ? $columns_ : (@json_decode($columns_, true) ?? ['*'])): ['*'];
+		return $this->has('_columns') ? (is_array($columns = $this->get('_columns')) ? $columns : (@json_decode($columns, true) ?? ['*'])): ['*'];
+	}
+
+	/**
+	 * returns the list of excluded columns
+	 * 
+	 *
+	 * @return array
+	 */
+	public function getExcludes()
+	{
+		# code...
+		return $this->has('_hidden') ? (is_array($columns = $this->get('_hidden')) ? $columns : (@json_decode($columns, true) ?? ['*'])): ['*'];
 	}
 
 }

@@ -64,8 +64,8 @@ final class Post extends Model implements AbstractQueryable, Adaptable
 	 * @var array
 	 */
 	public $relation_methods = [
-		'id',
 		'type',
+		'postTags',
 		'comments',
 	];
 
@@ -77,16 +77,8 @@ final class Post extends Model implements AbstractQueryable, Adaptable
 	protected $primaryKey = 'id';
 
 	/**
-	 *
-	 * @return BelongsTo
-	 */
-	public function id()
-	{
-		# code...
-		return $this->belongsTo(\App\Models\PostTag::class, 'id', 'post_id');
-	}
-
-	/**
+	 * returns an eloquent `belongs to` relation
+	 * 
 	 *
 	 * @return BelongsTo
 	 */
@@ -97,6 +89,20 @@ final class Post extends Model implements AbstractQueryable, Adaptable
 	}
 
 	/**
+	 * returns an eloquent `has many` relation
+	 * 
+	 *
+	 * @return HasMany
+	 */
+	public function postTags()
+	{
+		# code...
+		return $this->hasMany(\App\Models\PostTag::class, 'post_id', 'id');
+	}
+
+	/**
+	 * returns an eloquent `has many` relation
+	 * 
 	 *
 	 * @return HasMany
 	 */
@@ -104,6 +110,84 @@ final class Post extends Model implements AbstractQueryable, Adaptable
 	{
 		# code...
 		return $this->hasMany(\App\Models\Comment::class, 'post_id', 'id');
+	}
+
+	/**
+	 * Set `type_id` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setTypeId($value)
+	{
+		# code...
+		$this->setAttribute('type_id', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `type_id` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getTypeId()
+	{
+		# code...
+		return $this->getAttribute('type_id');
+	}
+
+	/**
+	 * Set `title` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setTitle($value)
+	{
+		# code...
+		$this->setAttribute('title', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `title` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getTitle()
+	{
+		# code...
+		return $this->getAttribute('title');
+	}
+
+	/**
+	 * Set `content` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setContent($value)
+	{
+		# code...
+		$this->setAttribute('content', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `content` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getContent()
+	{
+		# code...
+		return $this->getAttribute('content');
 	}
 
 	/**

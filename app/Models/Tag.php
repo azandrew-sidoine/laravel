@@ -15,7 +15,7 @@ use Drewlabs\PHPValue\Contracts\Adaptable;
 use Drewlabs\Query\Contracts\Queryable as AbstractQueryable;
 use Illuminate\Database\Eloquent\Model;
 use Drewlabs\Laravel\Query\Traits\Queryable;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Tag extends Model implements AbstractQueryable, Adaptable
 {
@@ -59,7 +59,7 @@ final class Tag extends Model implements AbstractQueryable, Adaptable
 	 * @var array
 	 */
 	public $relation_methods = [
-		'id',
+		'postTags',
 	];
 
 	/**
@@ -77,13 +77,41 @@ final class Tag extends Model implements AbstractQueryable, Adaptable
 	public $timestamps = false;
 
 	/**
+	 * returns an eloquent `has many` relation
+	 * 
 	 *
-	 * @return BelongsTo
+	 * @return HasMany
 	 */
-	public function id()
+	public function postTags()
 	{
 		# code...
-		return $this->belongsTo(\App\Models\PostTag::class, 'id', 'tag_id');
+		return $this->hasMany(\App\Models\PostTag::class, 'tag_id', 'id');
+	}
+
+	/**
+	 * Set `label` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setLabel($value)
+	{
+		# code...
+		$this->setAttribute('label', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `label` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getLabel()
+	{
+		# code...
+		return $this->getAttribute('label');
 	}
 
 	/**

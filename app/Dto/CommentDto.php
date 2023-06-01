@@ -16,6 +16,7 @@ use Drewlabs\PHPValue\Traits\Castable;
 use Drewlabs\PHPValue\Traits\ObjectAdapter;
 use Drewlabs\PHPValue\Contracts\Adaptable;
 use Drewlabs\Laravel\Query\Traits\URLRoutableAware;
+use Drewlabs\PHPValue\Contracts\HiddenAware;
 use Illuminate\Contracts\Routing\UrlRoutable;
 
 /**
@@ -27,7 +28,7 @@ use Illuminate\Contracts\Routing\UrlRoutable;
  *  
  * @package App\Dto
  */
-final class CommentDto implements ValueInterface, UrlRoutable
+final class CommentDto implements ValueInterface, UrlRoutable, HiddenAware
 {
 
 	use URLRoutableAware;

@@ -73,6 +73,8 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 	protected $primaryKey = 'id';
 
 	/**
+	 * returns an eloquent `belongs to` relation
+	 * 
 	 *
 	 * @return BelongsTo
 	 */
@@ -80,6 +82,58 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 	{
 		# code...
 		return $this->belongsTo(\App\Models\Post::class, 'post_id', 'id');
+	}
+
+	/**
+	 * Set `post_id` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setPostId($value)
+	{
+		# code...
+		$this->setAttribute('post_id', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `post_id` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getPostId()
+	{
+		# code...
+		return $this->getAttribute('post_id');
+	}
+
+	/**
+	 * Set `content` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setContent($value)
+	{
+		# code...
+		$this->setAttribute('content', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `content` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getContent()
+	{
+		# code...
+		return $this->getAttribute('content');
 	}
 
 	/**

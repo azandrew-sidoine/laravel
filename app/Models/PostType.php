@@ -72,6 +72,8 @@ final class PostType extends Model implements AbstractQueryable, Adaptable
 	protected $primaryKey = 'id';
 
 	/**
+	 * returns an eloquent `has many` relation
+	 * 
 	 *
 	 * @return HasMany
 	 */
@@ -79,6 +81,32 @@ final class PostType extends Model implements AbstractQueryable, Adaptable
 	{
 		# code...
 		return $this->hasMany(\App\Models\Post::class, 'type_id', 'id');
+	}
+
+	/**
+	 * Set `label` property to the parameter value
+	 * 
+	 * @param mixed $value
+	 *
+	 * @return static
+	 */
+	public function setLabel($value)
+	{
+		# code...
+		$this->setAttribute('label', $value);
+		return $this;
+	}
+
+	/**
+	 * Get `label` property value
+	 * 
+	 *
+	 * @return mixed
+	 */
+	public function getLabel()
+	{
+		# code...
+		return $this->getAttribute('label');
 	}
 
 	/**

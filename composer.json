@@ -12,10 +12,11 @@
         "drewlabs/support": "^0.2.2",
         "drewlabs/validation": "^0.2.6",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.75"
+        "laravel/framework": "^8.75",
+        "nyholm/psr7": "^1.8"
     },
     "require-dev": {
-        "drewlabs/g-cli": "dev-master",
+        "drewlabs/g-cli": "^0.2.4",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",

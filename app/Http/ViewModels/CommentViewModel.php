@@ -122,7 +122,7 @@ final class CommentViewModel implements AbstractViewModel
 	}
 
 	/**
-	 * returns the list of queried columns from current instance
+	 * returns the list of queried columns
 	 * 
 	 *
 	 * @return array
@@ -130,7 +130,19 @@ final class CommentViewModel implements AbstractViewModel
 	public function getColumns()
 	{
 		# code...
-		return $this->has('_columns') ? (is_array($columns_ = $this->get('_columns')) ? $columns_ : (@json_decode($columns_, true) ?? ['*'])): ['*'];
+		return $this->has('_columns') ? (is_array($columns = $this->get('_columns')) ? $columns : (@json_decode($columns, true) ?? ['*'])): ['*'];
+	}
+
+	/**
+	 * returns the list of excluded columns
+	 * 
+	 *
+	 * @return array
+	 */
+	public function getExcludes()
+	{
+		# code...
+		return $this->has('_hidden') ? (is_array($columns = $this->get('_hidden')) ? $columns : (@json_decode($columns, true) ?? ['*'])): ['*'];
 	}
 
 }

@@ -12,6 +12,7 @@
 namespace App\Http\Controllers;
 
 use Drewlabs\Http\Factory\OkResponseFactoryInterface;
+use Drewlabs\PHPValue\Utils\SanitizeCustomProperties;
 use App\Services\TagService;
 use App\Http\ViewModels\TagViewModel;
 use App\Dto\TagDto;
@@ -79,10 +80,11 @@ final class TagsController
 		# code...
 		$viewModel->authorize('viewAny', [$viewModel->getModel(), $viewModel]);
 		
-		//#region Hidden & Columns attributes
+		//#region Excepts & attributes
 		$columns = $viewModel->getColumns();
-		$excepts = $viewModel->get('_hidden') ?? [];
-		//#endregion Hidden & Columns attributes
+		$excepts = $viewModel->getExcludes();
+		$properties = (new SanitizeCustomProperties(true))($columns);
+		//#endregion Excepts & attributes
 		
 		$result = $this->service->handle(
 			$viewModel->has('per_page') ? SelectQueryAction(
@@ -94,8 +96,8 @@ final class TagsController
 				$viewModel->makeFilters(),
 				$columns,
 			),
-			useMapQueryResult(function ($value)  use ($excepts, $columns) {
-				return $value ? TagDto::new($value)->addProperties($columns)->mergeHidden($excepts) : $value;
+			useMapQueryResult(function ($value)  use ($excepts, $properties) {
+				return $value ? TagDto::new($value)->addProperties($properties)->mergeHidden(array_merge($excepts, $value->getHidden() ?? [])) : $value;
 			})
 		);
 		return $this->response->create($result);
@@ -115,15 +117,16 @@ final class TagsController
 		# code...
 		$viewModel->authorize('view', [$viewModel->find($id), $viewModel]);
 		
-		//#region Hidden & Columns attributes
+		//#region Excepts & attributes
 		$columns = $viewModel->getColumns();
-		$excepts = $viewModel->get('_hidden') ?? [];
-		//#endregion Hidden & Columns attributes
+		$excepts = $viewModel->getExcludes();
+		$properties = (new SanitizeCustomProperties(true))($columns);
+		//#endregion Excepts & attributes
 		
 		$result = $this->service->handle(
 			SelectQueryAction($id, $columns),
-			function ($value)  use ($excepts, $columns) {
-				return null !== $value ? TagDto::new($value)->addProperties($columns)->mergeHidden($excepts) : $value;
+			function ($value)  use ($excepts, $properties) {
+				return null !== $value ? TagDto::new($value)->addProperties($properties)->mergeHidden(array_merge($excepts, $value->getHidden() ?? [])) : $value;
 			}
 		);
 		return $this->response->create($result);

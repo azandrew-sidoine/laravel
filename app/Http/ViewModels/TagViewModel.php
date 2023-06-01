@@ -71,7 +71,7 @@ final class TagViewModel implements AbstractViewModel
 	{
 		# code...
 		return [
-			'id' => ['sometimes', 'exists:tags,id', 'integer', 'exists:post_tags,tag_id'],
+			'id' => ['sometimes', 'exists:tags,id', 'integer'],
 			'label' => ['required_without:id', 'string', 'max:50', $this->has('id') ? 'unique:tags,label,' . $this->id : 'unique:tags,label'],
 		];
 	}
@@ -98,7 +98,7 @@ final class TagViewModel implements AbstractViewModel
 	{
 		# code...
 		return [
-			'id' => ['sometimes', 'exists:tags,id', 'integer', 'exists:post_tags,tag_id'],
+			'id' => ['sometimes', 'exists:tags,id', 'integer'],
 			'label' => ['sometimes', 'string', 'max:50', 'unique:tags,label,' . $this->id],
 		];
 	}
@@ -116,7 +116,7 @@ final class TagViewModel implements AbstractViewModel
 	}
 
 	/**
-	 * returns the list of queried columns from current instance
+	 * returns the list of queried columns
 	 * 
 	 *
 	 * @return array
@@ -124,7 +124,19 @@ final class TagViewModel implements AbstractViewModel
 	public function getColumns()
 	{
 		# code...
-		return $this->has('_columns') ? (is_array($columns_ = $this->get('_columns')) ? $columns_ : (@json_decode($columns_, true) ?? ['*'])): ['*'];
+		return $this->has('_columns') ? (is_array($columns = $this->get('_columns')) ? $columns : (@json_decode($columns, true) ?? ['*'])): ['*'];
+	}
+
+	/**
+	 * returns the list of excluded columns
+	 * 
+	 *
+	 * @return array
+	 */
+	public function getExcludes()
+	{
+		# code...
+		return $this->has('_hidden') ? (is_array($columns = $this->get('_hidden')) ? $columns : (@json_decode($columns, true) ?? ['*'])): ['*'];
 	}
 
 }

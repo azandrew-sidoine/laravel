@@ -16,6 +16,7 @@ use Drewlabs\PHPValue\Traits\Castable;
 use Drewlabs\PHPValue\Traits\ObjectAdapter;
 use Drewlabs\PHPValue\Contracts\Adaptable;
 use Drewlabs\Laravel\Query\Traits\URLRoutableAware;
+use Drewlabs\PHPValue\Contracts\HiddenAware;
 use Illuminate\Contracts\Routing\UrlRoutable;
 
 /**
@@ -28,7 +29,7 @@ use Illuminate\Contracts\Routing\UrlRoutable;
  *  
  * @package App\Dto
  */
-final class PostDto implements ValueInterface, UrlRoutable
+final class PostDto implements ValueInterface, UrlRoutable, HiddenAware
 {
 
 	use URLRoutableAware;
@@ -56,8 +57,8 @@ final class PostDto implements ValueInterface, UrlRoutable
 	 * @var array
 	 */
 	protected $__CASTS__ = [
-		'id' => 'value:\App\Dto\PostTagDto',
 		'type' => 'value:\App\Dto\PostTypeDto',
+		'postTags' => 'collectionOf:\App\Dto\PostTagDto',
 		'comments' => 'collectionOf:\App\Dto\CommentDto',
 	];
 
