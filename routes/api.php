@@ -13,3 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware('auth:http')->group(function () {
+    // Add routes to be protected using auth http guard
+});
