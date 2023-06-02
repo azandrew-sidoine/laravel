@@ -16,6 +16,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        // Uncomment code below to prune stale cache tags when using redis driver for caching
+        // $schedule->command('cache:prune-stale-tags')->hourly();
     }
 
     /**

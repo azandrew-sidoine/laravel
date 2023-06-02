@@ -23,8 +23,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-
         // Configure the Http-Guard library to use cache
         // Uncomment the code below to enable caching in authentication guard
         // \Drewlabs\HttpGuard\HttpGuardGlobals::usesCache(true);

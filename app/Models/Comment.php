@@ -24,28 +24,28 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 
 	/**
 	 * Model referenced table
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $table = 'comments';
 
 	/**
 	 * List of values that must be hidden when generating the json output
-	 * 
+	 *
 	 * @var array
 	 */
 	protected $hidden = [];
 
 	/**
 	 * List of attributes that will be appended to the json output of the model
-	 * 
+	 *
 	 * @var array
 	 */
 	protected $appends = [];
 
 	/**
 	 * List of fillable properties of the current model
-	 * 
+	 *
 	 * @var array
 	 */
 	protected $fillable = [
@@ -58,7 +58,7 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 
 	/**
 	 * List of model relation methods
-	 * 
+	 *
 	 * @var array
 	 */
 	public $relation_methods = [
@@ -67,14 +67,14 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 
 	/**
 	 * Table primary key
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $primaryKey = 'id';
 
 	/**
 	 * returns an eloquent `belongs to` relation
-	 * 
+	 *
 	 *
 	 * @return BelongsTo
 	 */
@@ -86,7 +86,7 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 
 	/**
 	 * Set `post_id` property to the parameter value
-	 * 
+	 *
 	 * @param mixed $value
 	 *
 	 * @return static
@@ -100,7 +100,7 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 
 	/**
 	 * Get `post_id` property value
-	 * 
+	 *
 	 *
 	 * @return mixed
 	 */
@@ -112,7 +112,7 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 
 	/**
 	 * Set `content` property to the parameter value
-	 * 
+	 *
 	 * @param mixed $value
 	 *
 	 * @return static
@@ -126,7 +126,7 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 
 	/**
 	 * Get `content` property value
-	 * 
+	 *
 	 *
 	 * @return mixed
 	 */
@@ -138,7 +138,7 @@ final class Comment extends Model implements AbstractQueryable, Adaptable
 
 	/**
 	 * Bootstrap the model and its traits.
-	 * 
+	 *
 	 *
 	 * @return void
 	 */

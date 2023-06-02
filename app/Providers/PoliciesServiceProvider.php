@@ -19,7 +19,7 @@ final class PoliciesServiceProvider extends ServiceProvider
 
 	/**
 	 * Map application models to policies
-	 * 
+	 *
 	 * @var array
 	 */
 	private $policies = [
@@ -32,7 +32,7 @@ final class PoliciesServiceProvider extends ServiceProvider
 
 	/**
 	 * Policies property getter
-	 * 
+	 *
 	 *
 	 * @return array
 	 */
@@ -44,7 +44,7 @@ final class PoliciesServiceProvider extends ServiceProvider
 
 	/**
 	 * Register authorization policies.
-	 * 
+	 *
 	 *
 	 * @return void
 	 */
@@ -56,16 +56,16 @@ final class PoliciesServiceProvider extends ServiceProvider
 		}
 	}
 
-	/**
-	 * Boot application services.
-	 * 
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		# code...
-		$this->registerPolicies();
-	}
+        /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->booting(function() {
+            $this->registerPolicies();
+        });
+    }
 
 }
