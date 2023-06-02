@@ -7,7 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "drewlabs/laravel-http": "^0.2.10",
-        "drewlabs/laravel-http-guard": "*",
+        "drewlabs/laravel-http-guard": "^0.2.4",
         "drewlabs/laravel-query": "^0.2.10",
         "drewlabs/php-value": "^0.2.10",
         "drewlabs/support": "^0.2.2",

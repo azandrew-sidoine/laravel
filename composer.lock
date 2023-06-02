@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20543ce724f9e65480ae98f466ee206a",
+    "content-hash": "89885047f6efd50dae5c65f7712d7ffc",
     "packages": [
         {
             "name": "brick/math",
@@ -1098,16 +1098,16 @@
         },
         {
             "name": "drewlabs/laravel-http-guard",
-            "version": "v0.2.2",
+            "version": "v0.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/azlabsphp/laravel-http-guard.git",
-                "reference": "8b27e03d827556d76df19c030394ff879fcae957"
+                "reference": "d4f146aca672c1cb4e47b5dac3953081c196cb44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azlabsphp/laravel-http-guard/zipball/8b27e03d827556d76df19c030394ff879fcae957",
-                "reference": "8b27e03d827556d76df19c030394ff879fcae957",
+                "url": "https://api.github.com/repos/azlabsphp/laravel-http-guard/zipball/d4f146aca672c1cb4e47b5dac3953081c196cb44",
+                "reference": "d4f146aca672c1cb4e47b5dac3953081c196cb44",
                 "shasum": ""
             },
             "require": {
@@ -1156,9 +1156,9 @@
             ],
             "support": {
                 "issues": "https://github.com/azlabsphp/laravel-http-guard/issues",
-                "source": "https://github.com/azlabsphp/laravel-http-guard/tree/v0.2.2"
+                "source": "https://github.com/azlabsphp/laravel-http-guard/tree/v0.2.4"
             },
-            "time": "2023-06-02T08:00:42+00:00"
+            "time": "2023-06-02T08:26:36+00:00"
         },
         {
             "name": "drewlabs/laravel-query",
