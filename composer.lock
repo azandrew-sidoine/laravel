@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee495d779d6c5ee4ee32980b33a85734",
+    "content-hash": "2e88d6e3ff5a2bfda8337045114c92d2",
     "packages": [
         {
             "name": "brick/math",
@@ -894,99 +894,6 @@
             "time": "2023-05-21T13:32:05+00:00"
         },
         {
-            "name": "drewlabs/curl-client",
-            "version": "v0.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/azandrew-sidoine/drewlabs-curl-client.git",
-                "reference": "75dfc6efc5084b6ad6a61a48616cd95a2af21e1e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/azandrew-sidoine/drewlabs-curl-client/zipball/75dfc6efc5084b6ad6a61a48616cd95a2af21e1e",
-                "reference": "75dfc6efc5084b6ad6a61a48616cd95a2af21e1e",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "donatj/mock-webserver": "^2.5",
-                "phpunit/phpunit": ">=6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Drewlabs\\Curl\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "azandrew-sidoine",
-                    "email": "asmyns.platonnas29@gmail.com"
-                }
-            ],
-            "description": "Provides a PHP class around PHP curl object and Psr18 client based on the curl library",
-            "keywords": [
-                "curl",
-                "http"
-            ],
-            "support": {
-                "issues": "https://github.com/azandrew-sidoine/drewlabs-curl-client/issues",
-                "source": "https://github.com/azandrew-sidoine/drewlabs-curl-client/tree/v0.3.0"
-            },
-            "time": "2023-03-28T12:20:14+00:00"
-        },
-        {
-            "name": "drewlabs/curl-rest-client",
-            "version": "v0.2.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/azandrew-sidoine/curl-rest-client.git",
-                "reference": "d0d92ccee5b8d5e9ca72dd25f0aa4cadc53aa143"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/azandrew-sidoine/curl-rest-client/zipball/d0d92ccee5b8d5e9ca72dd25f0aa4cadc53aa143",
-                "reference": "d0d92ccee5b8d5e9ca72dd25f0aa4cadc53aa143",
-                "shasum": ""
-            },
-            "require": {
-                "drewlabs/curl-client": "^0.3.0"
-            },
-            "require-dev": {
-                "donatj/mock-webserver": "^2.6",
-                "phpunit/phpunit": ">=6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Drewlabs\\Curl\\REST\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "azandrew-sidoine",
-                    "email": "asmyns.platonnas29@gmail.com"
-                }
-            ],
-            "description": "Built on top of curl client library, it offers REST supported HTTP verbs for sending request to backend service.",
-            "support": {
-                "issues": "https://github.com/azandrew-sidoine/curl-rest-client/issues",
-                "source": "https://github.com/azandrew-sidoine/curl-rest-client/tree/v0.2.8"
-            },
-            "time": "2023-04-23T14:13:15+00:00"
-        },
-        {
             "name": "drewlabs/http-contracts",
             "version": "v0.2.5",
             "source": {
@@ -1096,70 +1003,6 @@
                 "source": "https://github.com/azlabsphp/laravel-http/tree/v0.2.10"
             },
             "time": "2023-05-31T18:51:29+00:00"
-        },
-        {
-            "name": "drewlabs/laravel-http-guard",
-            "version": "v0.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/azlabsphp/laravel-http-guard.git",
-                "reference": "d4f146aca672c1cb4e47b5dac3953081c196cb44"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/azlabsphp/laravel-http-guard/zipball/d4f146aca672c1cb4e47b5dac3953081c196cb44",
-                "reference": "d4f146aca672c1cb4e47b5dac3953081c196cb44",
-                "shasum": ""
-            },
-            "require": {
-                "drewlabs/contracts": "^0.2",
-                "drewlabs/core-helpers": "^0.2",
-                "drewlabs/curl-rest-client": "^0.1.20|^0.2",
-                "illuminate/support": "^7.0|^8.0|^9.0|^10.0",
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.5"
-            },
-            "suggest": {
-                "drewlabs/net": "Required to ping available servers ^0.1.0",
-                "ext/memcached": "Required to use the memcached provider.",
-                "predis/predis": "Required to use the redis cache provider."
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Drewlabs\\HttpGuard\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Drewlabs\\HttpGuard\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "azandrew-sidoine",
-                    "email": "asmyns.platonnas29@gmail.com"
-                }
-            ],
-            "description": "Laravel/Lumen authentication guard using using HTTP protocol interface",
-            "keywords": [
-                "guard",
-                "http",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/azlabsphp/laravel-http-guard/issues",
-                "source": "https://github.com/azlabsphp/laravel-http-guard/tree/v0.2.4"
-            },
-            "time": "2023-06-02T08:26:36+00:00"
         },
         {
             "name": "drewlabs/laravel-query",

@@ -19,20 +19,14 @@ final class PoliciesServiceProvider extends ServiceProvider
 
 	/**
 	 * Map application models to policies
-	 * 
+	 *
 	 * @var array
 	 */
-	private $policies = [
-		'\App\Models\Post' => '\App\Policies\PostPolicy',
-		'\App\Models\PostType' => '\App\Policies\PostTypePolicy',
-		'\App\Models\PostTag' => '\App\Policies\PostTagPolicy',
-		'\App\Models\Tag' => '\App\Policies\TagPolicy',
-		'\App\Models\Comment' => '\App\Policies\CommentPolicy',
-	];
+	private $policies = [];
 
 	/**
 	 * Policies property getter
-	 * 
+	 *
 	 *
 	 * @return array
 	 */
@@ -44,7 +38,7 @@ final class PoliciesServiceProvider extends ServiceProvider
 
 	/**
 	 * Register authorization policies.
-	 * 
+	 *
 	 *
 	 * @return void
 	 */
@@ -58,7 +52,7 @@ final class PoliciesServiceProvider extends ServiceProvider
 
 	/**
 	 * Boot application services.
-	 * 
+	 *
 	 *
 	 * @return void
 	 */
