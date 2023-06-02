@@ -5,26 +5,27 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0.2",
         "drewlabs/laravel-http": "^0.2.10",
         "drewlabs/laravel-http-guard": "*",
         "drewlabs/laravel-query": "^0.2.10",
         "drewlabs/php-value": "^0.2.10",
         "drewlabs/support": "^0.2.2",
         "drewlabs/validation": "^0.2.6",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.75",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.19",
         "nyholm/psr7": "^1.8"
     },
     "require-dev": {
         "drewlabs/g-cli": "^0.2.4",
-        "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
-        "laravel/tinker": "^2.5",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0",
+        "laravel/tinker": "^2.7"
     },
     "autoload": {
         "psr-4": {

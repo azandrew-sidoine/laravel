@@ -29,7 +29,6 @@ $app->afterLoadingEnvironment(function () {
     */
     \Drewlabs\Support\PackagesConfigurationManifest::load(require __DIR__ . '/../config/packages.php');
 });
-
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
