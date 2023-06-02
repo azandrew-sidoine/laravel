@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // Configuration of the http guard driver
+        'http' => [
+            'driver' => 'http'
+        ],
     ],
 
     /*
@@ -65,10 +69,19 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'http' => [
+            // Model class to be used by the package providers
+            'model' => \Drewlabs\HttpGuard\User::class,
+            // For Http request we must define the endpoint where is located the
+            // authorization server(s)
+            'hosts' => [
+                // When not using a cluster of servers, this default host is used
+                'default' => env('AUTH_GUARD_HTTP_HOST', 'http://localhost:4300'),
+
+                // Cluster of servers to be used for authentication
+                'cluster' => []
+            ]
+        ]
     ],
 
     /*
