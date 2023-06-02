@@ -17,55 +17,48 @@ use Illuminate\Support\ServiceProvider;
 final class PoliciesServiceProvider extends ServiceProvider
 {
 
-	/**
-	 * Map application models to policies
-	 *
-	 * @var array
-	 */
-	private $policies = [
-		'\App\Models\Post' => '\App\Policies\PostPolicy',
-		'\App\Models\PostType' => '\App\Policies\PostTypePolicy',
-		'\App\Models\PostTag' => '\App\Policies\PostTagPolicy',
-		'\App\Models\Tag' => '\App\Policies\TagPolicy',
-		'\App\Models\Comment' => '\App\Policies\CommentPolicy',
-	];
+    /**
+     * Map application models to policies
+     *
+     * @var array
+     */
+    private $policies = [];
 
-	/**
-	 * Policies property getter
-	 *
-	 *
-	 * @return array
-	 */
-	private function policies()
-	{
-		# code...
-		return $this->policies;
-	}
+    /**
+     * Policies property getter
+     *
+     *
+     * @return array
+     */
+    private function policies()
+    {
+        # code...
+        return $this->policies;
+    }
 
-	/**
-	 * Register authorization policies.
-	 *
-	 *
-	 * @return void
-	 */
-	private function registerPolicies()
-	{
-		# code...
-		foreach ($this->policies() as $model => $policy) {
-			Gate::policy($model, $policy);
-		}
-	}
-
-        /**
+    /**
      * Register any application services.
      *
      * @return void
      */
     public function register()
     {
-        $this->booting(function() {
+        $this->booting(function () {
             $this->registerPolicies();
         });
     }
 
+    /**
+     * Register authorization policies.
+     *
+     *
+     * @return void
+     */
+    private function registerPolicies()
+    {
+        # code...
+        foreach ($this->policies() as $model => $policy) {
+            Gate::policy($model, $policy);
+        }
+    }
 }
