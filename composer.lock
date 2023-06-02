@@ -6261,16 +6261,16 @@
         },
         {
             "name": "drewlabs/g-cli",
-            "version": "v0.2.4",
+            "version": "v0.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/azlabsphp/gcli.git",
-                "reference": "260bd4f4d1a908d0abd43f976508fb7d05f86fc7"
+                "reference": "6d493c205aab76749951cf0f6ba0d46d389b57e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azlabsphp/gcli/zipball/260bd4f4d1a908d0abd43f976508fb7d05f86fc7",
-                "reference": "260bd4f4d1a908d0abd43f976508fb7d05f86fc7",
+                "url": "https://api.github.com/repos/azlabsphp/gcli/zipball/6d493c205aab76749951cf0f6ba0d46d389b57e2",
+                "reference": "6d493c205aab76749951cf0f6ba0d46d389b57e2",
                 "shasum": ""
             },
             "require": {
@@ -6324,9 +6324,9 @@
             "description": "Generates classes, services, models and controller's components or entire project source code from databse structure",
             "support": {
                 "issues": "https://github.com/azlabsphp/gcli/issues",
-                "source": "https://github.com/azlabsphp/gcli/tree/v0.2.4"
+                "source": "https://github.com/azlabsphp/gcli/tree/v0.2.5"
             },
-            "time": "2023-06-01T12:26:19+00:00"
+            "time": "2023-06-01T20:26:32+00:00"
         },
         {
             "name": "facade/flare-client-php",
@@ -8824,5 +8824,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
