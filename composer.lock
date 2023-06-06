@@ -231,16 +231,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.6.2",
+            "version": "3.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "b4bd1cfbd2b916951696d82e57d054394d84864c"
+                "reference": "9a747d29e7e6b39509b8f1847e37a23a0163ea6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/b4bd1cfbd2b916951696d82e57d054394d84864c",
-                "reference": "b4bd1cfbd2b916951696d82e57d054394d84864c",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/9a747d29e7e6b39509b8f1847e37a23a0163ea6a",
+                "reference": "9a747d29e7e6b39509b8f1847e37a23a0163ea6a",
                 "shasum": ""
             },
             "require": {
@@ -253,12 +253,12 @@
                 "psr/log": "^1|^2|^3"
             },
             "require-dev": {
-                "doctrine/coding-standard": "11.1.0",
+                "doctrine/coding-standard": "12.0.0",
                 "fig/log-test": "^1",
                 "jetbrains/phpstorm-stubs": "2022.3",
-                "phpstan/phpstan": "1.10.9",
+                "phpstan/phpstan": "1.10.14",
                 "phpstan/phpstan-strict-rules": "^1.5",
-                "phpunit/phpunit": "9.6.6",
+                "phpunit/phpunit": "9.6.7",
                 "psalm/plugin-phpunit": "0.18.4",
                 "squizlabs/php_codesniffer": "3.7.2",
                 "symfony/cache": "^5.4|^6.0",
@@ -323,7 +323,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.6.2"
+                "source": "https://github.com/doctrine/dbal/tree/3.6.3"
             },
             "funding": [
                 {
@@ -339,29 +339,33 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-14T07:25:38+00:00"
+            "time": "2023-06-01T05:46:46+00:00"
         },
         {
             "name": "doctrine/deprecations",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "8cffffb2218e01f3b370bf763e00e81697725259"
+                "reference": "612a3ee5ab0d5dd97b7cf3874a6efe24325efac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/8cffffb2218e01f3b370bf763e00e81697725259",
-                "reference": "8cffffb2218e01f3b370bf763e00e81697725259",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/612a3ee5ab0d5dd97b7cf3874a6efe24325efac3",
+                "reference": "612a3ee5ab0d5dd97b7cf3874a6efe24325efac3",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1|^8.0"
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^9",
-                "phpunit/phpunit": "^7.5|^8.5|^9.5",
-                "psr/log": "^1|^2|^3"
+                "phpstan/phpstan": "1.4.10 || 1.10.15",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "psalm/plugin-phpunit": "0.18.4",
+                "psr/log": "^1 || ^2 || ^3",
+                "vimeo/psalm": "4.30.0 || 5.12.0"
             },
             "suggest": {
                 "psr/log": "Allows logging deprecations via PSR-3 logger implementation"
@@ -380,9 +384,9 @@
             "homepage": "https://www.doctrine-project.org/",
             "support": {
                 "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/v1.1.0"
+                "source": "https://github.com/doctrine/deprecations/tree/v1.1.1"
             },
-            "time": "2023-05-29T18:55:17+00:00"
+            "time": "2023-06-03T09:27:29+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -1099,23 +1103,23 @@
         },
         {
             "name": "drewlabs/laravel-http-guard",
-            "version": "v0.2.4",
+            "version": "v0.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/azlabsphp/laravel-http-guard.git",
-                "reference": "d4f146aca672c1cb4e47b5dac3953081c196cb44"
+                "reference": "2a73a0e8b02f9d345e025144bd1af689e2f601a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azlabsphp/laravel-http-guard/zipball/d4f146aca672c1cb4e47b5dac3953081c196cb44",
-                "reference": "d4f146aca672c1cb4e47b5dac3953081c196cb44",
+                "url": "https://api.github.com/repos/azlabsphp/laravel-http-guard/zipball/2a73a0e8b02f9d345e025144bd1af689e2f601a8",
+                "reference": "2a73a0e8b02f9d345e025144bd1af689e2f601a8",
                 "shasum": ""
             },
             "require": {
                 "drewlabs/contracts": "^0.2",
                 "drewlabs/core-helpers": "^0.2",
                 "drewlabs/curl-rest-client": "^0.1.20|^0.2",
-                "illuminate/support": "^7.0|^8.0|^9.0|^10.0",
+                "illuminate/support": "^8.0|^9.0|^10.0",
                 "php": ">=7.2"
             },
             "require-dev": {
@@ -1157,22 +1161,22 @@
             ],
             "support": {
                 "issues": "https://github.com/azlabsphp/laravel-http-guard/issues",
-                "source": "https://github.com/azlabsphp/laravel-http-guard/tree/v0.2.4"
+                "source": "https://github.com/azlabsphp/laravel-http-guard/tree/v0.2.5"
             },
-            "time": "2023-06-02T08:26:36+00:00"
+            "time": "2023-06-02T10:25:52+00:00"
         },
         {
             "name": "drewlabs/laravel-query",
-            "version": "v0.2.12",
+            "version": "v0.2.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/azlabsphp/laravel-query.git",
-                "reference": "0533163e850e375943613b7ac7e0989858ceba6d"
+                "reference": "2122a3a6394408b0ddc6b77e60a046a018cdbc6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azlabsphp/laravel-query/zipball/0533163e850e375943613b7ac7e0989858ceba6d",
-                "reference": "0533163e850e375943613b7ac7e0989858ceba6d",
+                "url": "https://api.github.com/repos/azlabsphp/laravel-query/zipball/2122a3a6394408b0ddc6b77e60a046a018cdbc6b",
+                "reference": "2122a3a6394408b0ddc6b77e60a046a018cdbc6b",
                 "shasum": ""
             },
             "require": {
@@ -1222,9 +1226,9 @@
             "description": "Provides drewlabs/query bindings for laravel framework",
             "support": {
                 "issues": "https://github.com/azlabsphp/laravel-query/issues",
-                "source": "https://github.com/azlabsphp/laravel-query/tree/v0.2.12"
+                "source": "https://github.com/azlabsphp/laravel-query/tree/v0.2.22"
             },
-            "time": "2023-06-01T12:31:13+00:00"
+            "time": "2023-06-05T13:13:48+00:00"
         },
         {
             "name": "drewlabs/overloadable",
@@ -1324,16 +1328,16 @@
         },
         {
             "name": "drewlabs/query",
-            "version": "v0.2.20",
+            "version": "v0.2.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/azlabsphp/query.git",
-                "reference": "10e3b5daab978c426cdce087af58ed6641c0795e"
+                "reference": "0b4ba7e215a0f6536975015940dba11a9d1e0bf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azlabsphp/query/zipball/10e3b5daab978c426cdce087af58ed6641c0795e",
-                "reference": "10e3b5daab978c426cdce087af58ed6641c0795e",
+                "url": "https://api.github.com/repos/azlabsphp/query/zipball/0b4ba7e215a0f6536975015940dba11a9d1e0bf4",
+                "reference": "0b4ba7e215a0f6536975015940dba11a9d1e0bf4",
                 "shasum": ""
             },
             "require": {
@@ -1367,9 +1371,9 @@
             ],
             "support": {
                 "issues": "https://github.com/azlabsphp/query/issues",
-                "source": "https://github.com/azlabsphp/query/tree/v0.2.20"
+                "source": "https://github.com/azlabsphp/query/tree/v0.2.23"
             },
-            "time": "2023-05-31T08:25:34+00:00"
+            "time": "2023-06-05T13:18:27+00:00"
         },
         {
             "name": "drewlabs/support",
@@ -2086,16 +2090,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.13.0",
+            "version": "v10.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "7322723585103082758d74917db62980684845cb"
+                "reference": "fd4619b56b56308e2c2c1840fedd0b8ebb73dfc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/7322723585103082758d74917db62980684845cb",
-                "reference": "7322723585103082758d74917db62980684845cb",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/fd4619b56b56308e2c2c1840fedd0b8ebb73dfc5",
+                "reference": "fd4619b56b56308e2c2c1840fedd0b8ebb73dfc5",
                 "shasum": ""
             },
             "require": {
@@ -2282,7 +2286,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-05-30T14:46:25+00:00"
+            "time": "2023-06-05T15:48:15+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -6664,21 +6668,22 @@
         },
         {
             "name": "drewlabs/g-cli",
-            "version": "v0.2.5",
+            "version": "v0.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/azlabsphp/gcli.git",
-                "reference": "6d493c205aab76749951cf0f6ba0d46d389b57e2"
+                "reference": "3c607427f5930d363c8fd1d8619730f825fb1605"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azlabsphp/gcli/zipball/6d493c205aab76749951cf0f6ba0d46d389b57e2",
-                "reference": "6d493c205aab76749951cf0f6ba0d46d389b57e2",
+                "url": "https://api.github.com/repos/azlabsphp/gcli/zipball/3c607427f5930d363c8fd1d8619730f825fb1605",
+                "reference": "3c607427f5930d363c8fd1d8619730f825fb1605",
                 "shasum": ""
             },
             "require": {
                 "drewlabs/code-generator": "^0.2.4",
                 "drewlabs/core-helpers": "^0.2.2",
+                "drewlabs/htr": "^0.2.0",
                 "php": ">=7.2"
             },
             "require-dev": {
@@ -6727,9 +6732,62 @@
             "description": "Generates classes, services, models and controller's components or entire project source code from databse structure",
             "support": {
                 "issues": "https://github.com/azlabsphp/gcli/issues",
-                "source": "https://github.com/azlabsphp/gcli/tree/v0.2.5"
+                "source": "https://github.com/azlabsphp/gcli/tree/v0.2.16"
             },
-            "time": "2023-06-01T20:26:32+00:00"
+            "time": "2023-06-06T10:09:53+00:00"
+        },
+        {
+            "name": "drewlabs/htr",
+            "version": "v0.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/azandrew-sidoine/php-htr.git",
+                "reference": "be41d7f66a828c107466d44043c9808067aa4e14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/azandrew-sidoine/php-htr/zipball/be41d7f66a828c107466d44043c9808067aa4e14",
+                "reference": "be41d7f66a828c107466d44043c9808067aa4e14",
+                "shasum": ""
+            },
+            "require": {
+                "drewlabs/curl-rest-client": "^0.2.6",
+                "ext-json": "*"
+            },
+            "suggest": {
+                "ext-yaml": "required to parse and generate yaml documents"
+            },
+            "bin": [
+                "bin/htr"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Drewlabs\\Htr\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "azandrew-sidoine",
+                    "email": "asmyns.platonnas29@gmail.com"
+                }
+            ],
+            "description": "HTTP Web Service Test runner implementation using PHP Programming language and configuration files written in YAML or JSON format",
+            "keywords": [
+                "http",
+                "json",
+                "test runner",
+                "yaml"
+            ],
+            "support": {
+                "issues": "https://github.com/azandrew-sidoine/php-htr/issues",
+                "source": "https://github.com/azandrew-sidoine/php-htr/tree/v0.2.6"
+            },
+            "time": "2023-06-06T10:07:23+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -7122,28 +7180,30 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.5.1",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "e92dcc83d5a51851baf5f5591d32cb2b16e3684e"
+                "reference": "a8dd186f07ea667c1e3abd2176bfab0ab161ea94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/e92dcc83d5a51851baf5f5591d32cb2b16e3684e",
-                "reference": "e92dcc83d5a51851baf5f5591d32cb2b16e3684e",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/a8dd186f07ea667c1e3abd2176bfab0ab161ea94",
+                "reference": "a8dd186f07ea667c1e3abd2176bfab0ab161ea94",
                 "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "^2.0.1",
                 "lib-pcre": ">=7.0",
-                "php": "^7.3 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "conflict": {
                 "phpunit/phpunit": "<8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5 || ^9.3"
+                "phpunit/phpunit": "^8.5 || ^9.3",
+                "psalm/plugin-phpunit": "^0.18",
+                "vimeo/psalm": "^5.9"
             },
             "type": "library",
             "extra": {
@@ -7152,8 +7212,12 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Mockery": "library/"
+                "files": [
+                    "library/helpers.php",
+                    "library/Mockery.php"
+                ],
+                "psr-4": {
+                    "Mockery\\": "library/Mockery"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -7188,9 +7252,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/1.5.1"
+                "source": "https://github.com/mockery/mockery/tree/1.6.1"
             },
-            "time": "2022-09-07T15:32:08+00:00"
+            "time": "2023-06-05T13:59:03+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -7836,16 +7900,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.2.0",
+            "version": "10.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3aad97fde1f3e490e2b316ba56bc4680310e3c3f"
+                "reference": "599b33294350e8f51163119d5670512f98b0490d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3aad97fde1f3e490e2b316ba56bc4680310e3c3f",
-                "reference": "3aad97fde1f3e490e2b316ba56bc4680310e3c3f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/599b33294350e8f51163119d5670512f98b0490d",
+                "reference": "599b33294350e8f51163119d5670512f98b0490d",
                 "shasum": ""
             },
             "require": {
@@ -7917,7 +7981,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.0"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.1"
             },
             "funding": [
                 {
@@ -7933,7 +7997,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-02T05:42:13+00:00"
+            "time": "2023-06-05T05:15:51+00:00"
         },
         {
             "name": "psy/psysh",

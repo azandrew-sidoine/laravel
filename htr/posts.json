@@ -1,0 +1,158 @@
+{
+    "project": "2EB5FB28-E0DB-43DD-AEBC-EA262EDE865A",
+    "name": "Posts HTr Project",
+    "version": "0.2.0",
+    "env": [
+        {
+            "name": "_bearerToken",
+            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI4NTk3ODJFMS05QTJGLTQ5QTQtOUQ0Mi1CNTlBNzhFNTIwRkIiLCJqdGkiOiJjZGI3ODBlNDAwNDhjY2QwMGVjMjBlYzNhNDUwNTFmYmUyODAzMzJhN2I3YWUzYmRiOTdhYzliNWUyOTA1NzA2NGU5ZTA2NDk0Y2YxZDNkNyIsImlhdCI6MTY4NjA0Njg2NS44MzA4ODMsIm5iZiI6MTY4NjA0Njg2NS44MzA4ODcsImV4cCI6MTY4NjEzMzI2NS44MTk0MzYsInN1YiI6IjI0Iiwic2NvcGVzIjpbImNvb3BlYy1jYWlzc2VzOm9wZXJhdGlvbjpjcmVhdGUiLCJjb29wZWMtY2Fpc3NlczpvcGVyYXRpb246bGlzdCIsImNvb3BlYy1jYWlzc2VzOm9wZXJhdGlvbjp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczp0eXBlLW9wZXJhdGlvbjp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczp0eXBlLW9wZXJhdGlvbjpjcmVhdGUiLCJjb29wZWMtY2Fpc3Nlczp0eXBlLW9wZXJhdGlvbjpkZWxldGUiLCJjb29wZWMtY2Fpc3Nlczpqb3VybmVlLWNhaXNzZTp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczpqb3VybmVlLWNhaXNzZTpjcmVhdGUiLCJjb29wZWMtY2Fpc3Nlczpqb3VybmVlLWNhaXNzZTpsaXN0IiwiY29vcGVjLWNhaXNzZXM6Y2Fpc3NlOmxpc3QiLCJjb29wZWMtY2Fpc3NlczpjYWlzc2U6Y3JlYXRlIiwiY29vcGVjLWNhaXNzZXM6Y2Fpc3NlOnVwZGF0ZSIsImNvb3BlYy1jYWlzc2VzOmNhaXNzZTpkZWxldGUiLCJjb29wZWMtY2Fpc3NlczpndWljaGV0OmRlbGV0ZSIsImNvb3BlYy1jYWlzc2VzOmd1aWNoZXQ6bGlzdCIsImNvb3BlYy1jYWlzc2VzOmd1aWNoZXQ6Y3JlYXRlIiwiY29vcGVjLWNhaXNzZXM6Z3VpY2hldDp1cGRhdGUiLCJjb29wZWM6Y29uZmlnOmNyZWF0ZSIsImNvb3BlYzpjb25maWc6bGlzdCIsImNvb3BlYzpjb25maWc6ZGVsZXRlIiwiY29vcGVjOmNvbmZpZ3M6ZGVsZXRlIiwiY29vcGVjOmNvbmZpZ3M6Y3JlYXRlIiwiY29vcGVjOmNvbmZpZ3M6dXBkYXRlIiwiY29vcGVjOmNvbmZpZzp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczpjb25maWc6bGlzdCIsImNvb3BlYy1jYWlzc2VzOmNvbmZpZzp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczpjb25maWc6Y3JlYXRlIiwiY29vcGVjLWNhaXNzZXM6Y29uZmlnOmRlbGV0ZSIsImNvb3BlYy1jYWlzc2VzOmNvdW50ZXJzOmNyZWF0ZSIsImNvb3BlYy1jYWlzc2VzOmNvdW50ZXJzOmxpc3QiLCJjb29wZWMtY2Fpc3Nlczpjb3VudGVyczp1cGRhdGUiLCJjb29wZWM6YWNjb3VudHM6YWNjb3VudHM6bGlzdCJdfQ.Yrv4GligzrY-X0TlnYKvoI_mncS7pklfPZ0QyQ5z1DK9FJwCJbYvus7S3vjiGRbNeJ3fHlgejmxGEC4nyAsqdvAyVNpJgZYGI_0u5VJxOvPkJewoys6k4xF6xqlvSQ5osC6TjUTkdVotoO1ldmD4AVgiTy1vWOUMh1_fzdrhDlwLFpFB_fAMdW8CcVJc8e-XOxXn322w1NfDDBxunawVG5ysy4EZyeSMSJkv8x9rLaOvvvIIkzoygHFjyBlfT_5dYOUZd_lKNrGZyTL1vG14958F1cOj-bDZP8RH_VEnFlcawVipu6J-NSrLUZF7hSgoJ22vDlU6Lvm1ZtXb-LYVI8Jp04zwPIXRqDpdRH2JJ6bqBUDH38Tg9Qpm33LY0lNoLfNRCm3NdTCdUBqgDgO50WR3CfDysALyFTbt5EoIU3eIBFDKzT_CJK5ZeDwlibdlW38WF5ajFb_QyLhoaEPPxQOOejO6wfijhZlO6tGdWiLDJmXKMSF5yeGvcLJVsGMbHTeDNQql6h514EURL_Y6aJQusuqkabodWdRstsxNzrci4zzyCfw5VdJTBQ98LA61ljKTZuZr6m3QJOj5uQegYqtYP8e0XXMeBOrHgt-N4LCcAzuZauiq89txYFtc7b1oFTq6feokBoLsVPOl_3lojgBHY47gODC3Zz66XomriyY"
+        },
+        {
+            "name": "_host",
+            "value": "http://127.0.0.1:8000/api"
+        },
+        {
+            "name": "_id",
+            "value": 1
+        }
+    ],
+    "components": [
+        {
+            "id": "168604696749786",
+            "name": "posts",
+            "description": "/GET posts",
+            "method": "GET",
+            "url": "[_host]/posts",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696768574",
+            "name": "posts",
+            "description": "/GET posts/[_id]",
+            "method": "GET",
+            "url": "[_host]/posts/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696787889",
+            "name": "posts",
+            "description": "/POST posts",
+            "method": "POST",
+            "url": "[_host]/posts",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "type_id",
+                    "value": "1",
+                    "type": "integer"
+                },
+                {
+                    "name": "title",
+                    "value": "Neymar & Manchester United deal is closed...",
+                    "type": "text"
+                },
+                {
+                    "name": "content",
+                    "value": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696748168",
+            "name": "posts",
+            "description": "/PUT posts/[_id]",
+            "method": "PUT",
+            "url": "[_host]/posts/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "type_id",
+                    "value": 1,
+                    "type": "integer"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696758664",
+            "name": "posts",
+            "description": "/DELETE posts/[_id]",
+            "method": "DELETE",
+            "url": "[_host]/posts/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        }
+    ]
+}

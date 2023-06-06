@@ -1,0 +1,158 @@
+{
+    "project": "5140CF3A-6B8E-41CD-9103-45197D94F8A4",
+    "name": "Post tags HTr Project",
+    "version": "0.2.0",
+    "env": [
+        {
+            "name": "_bearerToken",
+            "value": ""
+        },
+        {
+            "name": "_host",
+            "value": "http://127.0.0.1:8000/api"
+        },
+        {
+            "name": "_id",
+            "value": 1
+        }
+    ],
+    "components": [
+        {
+            "id": "168604696760409",
+            "name": "post tags",
+            "description": "/GET post-tags",
+            "method": "GET",
+            "url": "[_host]/post-tags",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696796550",
+            "name": "post tags",
+            "description": "/GET post-tags/[_id]",
+            "method": "GET",
+            "url": "[_host]/post-tags/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696747370",
+            "name": "post tags",
+            "description": "/POST post-tags",
+            "method": "POST",
+            "url": "[_host]/post-tags",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "post_id",
+                    "value": "",
+                    "type": "text"
+                },
+                {
+                    "name": "tag_id",
+                    "value": "",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "16860469671555",
+            "name": "post tags",
+            "description": "/PUT post-tags/[_id]",
+            "method": "PUT",
+            "url": "[_host]/post-tags/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "post_id",
+                    "value": "",
+                    "type": "text"
+                },
+                {
+                    "name": "tag_id",
+                    "value": "",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696728387",
+            "name": "post tags",
+            "description": "/DELETE post-tags/[_id]",
+            "method": "DELETE",
+            "url": "[_host]/post-tags/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        }
+    ]
+}

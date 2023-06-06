@@ -78,7 +78,7 @@ final class PostsController
 	public function index(PostViewModel $viewModel)
 	{
 		# code...
-		$viewModel->authorize('viewAny', [$viewModel->getModel(), $viewModel]);
+		$viewModel->authorize('viewAny',  [$viewModel->getModel(), $viewModel]);
 		
 		//#region Excepts & attributes
 		$columns = $viewModel->getColumns();

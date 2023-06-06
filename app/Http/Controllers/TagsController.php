@@ -78,7 +78,7 @@ final class TagsController
 	public function index(TagViewModel $viewModel)
 	{
 		# code...
-		$viewModel->authorize('viewAny', [$viewModel->getModel(), $viewModel]);
+		$viewModel->authorize('viewAny',  [$viewModel->getModel(), $viewModel]);
 		
 		//#region Excepts & attributes
 		$columns = $viewModel->getColumns();

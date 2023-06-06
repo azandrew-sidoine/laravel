@@ -1,0 +1,148 @@
+{
+    "project": "85020D39-B781-460D-9E52-48321D79799C",
+    "name": "Tags HTr Project",
+    "version": "0.2.0",
+    "env": [
+        {
+            "name": "_bearerToken",
+            "value": ""
+        },
+        {
+            "name": "_host",
+            "value": "http://127.0.0.1:8000/api"
+        },
+        {
+            "name": "_id",
+            "value": 1
+        }
+    ],
+    "components": [
+        {
+            "id": "168604696723891",
+            "name": "tags",
+            "description": "/GET tags",
+            "method": "GET",
+            "url": "[_host]/tags",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696751986",
+            "name": "tags",
+            "description": "/GET tags/[_id]",
+            "method": "GET",
+            "url": "[_host]/tags/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696798589",
+            "name": "tags",
+            "description": "/POST tags",
+            "method": "POST",
+            "url": "[_host]/tags",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "label",
+                    "value": "",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696721138",
+            "name": "tags",
+            "description": "/PUT tags/[_id]",
+            "method": "PUT",
+            "url": "[_host]/tags/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "label",
+                    "value": "",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696731960",
+            "name": "tags",
+            "description": "/DELETE tags/[_id]",
+            "method": "DELETE",
+            "url": "[_host]/tags/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        }
+    ]
+}

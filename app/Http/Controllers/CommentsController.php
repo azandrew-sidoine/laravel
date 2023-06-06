@@ -78,7 +78,7 @@ final class CommentsController
 	public function index(CommentViewModel $viewModel)
 	{
 		# code...
-		$viewModel->authorize('viewAny', [$viewModel->getModel(), $viewModel]);
+		$viewModel->authorize('viewAny',  [$viewModel->getModel(), $viewModel]);
 		
 		//#region Excepts & attributes
 		$columns = $viewModel->getColumns();

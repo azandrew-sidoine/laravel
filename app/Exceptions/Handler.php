@@ -4,13 +4,16 @@ namespace App\Exceptions;
 
 use Drewlabs\Http\Factory\AuthorizationErrorResponseFactoryInterface;
 use Drewlabs\Http\Factory\BadRequestResponseFactoryInterface;
+use Drewlabs\Http\Factory\ResponseFactoryInterface;
 use Drewlabs\Http\Factory\ServerErrorResponseFactoryInterface;
 use Drewlabs\Validation\Exceptions\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Container\Container;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -54,11 +57,11 @@ class Handler extends ExceptionHandler
                 if ($e instanceof ValidationException) {
                     return Container::getInstance()->make(BadRequestResponseFactoryInterface::class)->create($e->getErrors());
                 }
-                if ($e instanceof AuthenticationException) {
+                if (($e instanceof AuthorizationException) || ($e instanceof AuthenticationException) || ($e instanceof AccessDeniedHttpException)) {
                     return Container::getInstance()->make(AuthorizationErrorResponseFactoryInterface::class)->create($request, $e);
                 }
-                if ($e instanceof AuthorizationException) {
-                    return Container::getInstance()->make(AuthorizationErrorResponseFactoryInterface::class)->create($request, $e);
+                if ($e instanceof HttpException){
+                    return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
                 }
                 return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create($e);
             }

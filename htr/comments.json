@@ -1,0 +1,158 @@
+{
+    "project": "AF0BC661-3781-440E-8879-50A1EDE3C2B3",
+    "name": "Comments HTr Project",
+    "version": "0.2.0",
+    "env": [
+        {
+            "name": "_bearerToken",
+            "value": ""
+        },
+        {
+            "name": "_host",
+            "value": "http://127.0.0.1:8000/api"
+        },
+        {
+            "name": "_id",
+            "value": 1
+        }
+    ],
+    "components": [
+        {
+            "id": "168604696767783",
+            "name": "comments",
+            "description": "/GET comments",
+            "method": "GET",
+            "url": "[_host]/comments",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696765197",
+            "name": "comments",
+            "description": "/GET comments/[_id]",
+            "method": "GET",
+            "url": "[_host]/comments/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696756050",
+            "name": "comments",
+            "description": "/POST comments",
+            "method": "POST",
+            "url": "[_host]/comments",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "post_id",
+                    "value": "",
+                    "type": "text"
+                },
+                {
+                    "name": "content",
+                    "value": "",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696723577",
+            "name": "comments",
+            "description": "/PUT comments/[_id]",
+            "method": "PUT",
+            "url": "[_host]/comments/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "post_id",
+                    "value": "",
+                    "type": "text"
+                },
+                {
+                    "name": "content",
+                    "value": "",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696758109",
+            "name": "comments",
+            "description": "/DELETE comments/[_id]",
+            "method": "DELETE",
+            "url": "[_host]/comments/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        }
+    ]
+}

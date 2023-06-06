@@ -1,0 +1,148 @@
+{
+    "project": "31C1F502-EAEF-4156-8EA4-71678FF7E5AE",
+    "name": "Post types HTr Project",
+    "version": "0.2.0",
+    "env": [
+        {
+            "name": "_bearerToken",
+            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI4NTk3ODJFMS05QTJGLTQ5QTQtOUQ0Mi1CNTlBNzhFNTIwRkIiLCJqdGkiOiJjZGI3ODBlNDAwNDhjY2QwMGVjMjBlYzNhNDUwNTFmYmUyODAzMzJhN2I3YWUzYmRiOTdhYzliNWUyOTA1NzA2NGU5ZTA2NDk0Y2YxZDNkNyIsImlhdCI6MTY4NjA0Njg2NS44MzA4ODMsIm5iZiI6MTY4NjA0Njg2NS44MzA4ODcsImV4cCI6MTY4NjEzMzI2NS44MTk0MzYsInN1YiI6IjI0Iiwic2NvcGVzIjpbImNvb3BlYy1jYWlzc2VzOm9wZXJhdGlvbjpjcmVhdGUiLCJjb29wZWMtY2Fpc3NlczpvcGVyYXRpb246bGlzdCIsImNvb3BlYy1jYWlzc2VzOm9wZXJhdGlvbjp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczp0eXBlLW9wZXJhdGlvbjp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczp0eXBlLW9wZXJhdGlvbjpjcmVhdGUiLCJjb29wZWMtY2Fpc3Nlczp0eXBlLW9wZXJhdGlvbjpkZWxldGUiLCJjb29wZWMtY2Fpc3Nlczpqb3VybmVlLWNhaXNzZTp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczpqb3VybmVlLWNhaXNzZTpjcmVhdGUiLCJjb29wZWMtY2Fpc3Nlczpqb3VybmVlLWNhaXNzZTpsaXN0IiwiY29vcGVjLWNhaXNzZXM6Y2Fpc3NlOmxpc3QiLCJjb29wZWMtY2Fpc3NlczpjYWlzc2U6Y3JlYXRlIiwiY29vcGVjLWNhaXNzZXM6Y2Fpc3NlOnVwZGF0ZSIsImNvb3BlYy1jYWlzc2VzOmNhaXNzZTpkZWxldGUiLCJjb29wZWMtY2Fpc3NlczpndWljaGV0OmRlbGV0ZSIsImNvb3BlYy1jYWlzc2VzOmd1aWNoZXQ6bGlzdCIsImNvb3BlYy1jYWlzc2VzOmd1aWNoZXQ6Y3JlYXRlIiwiY29vcGVjLWNhaXNzZXM6Z3VpY2hldDp1cGRhdGUiLCJjb29wZWM6Y29uZmlnOmNyZWF0ZSIsImNvb3BlYzpjb25maWc6bGlzdCIsImNvb3BlYzpjb25maWc6ZGVsZXRlIiwiY29vcGVjOmNvbmZpZ3M6ZGVsZXRlIiwiY29vcGVjOmNvbmZpZ3M6Y3JlYXRlIiwiY29vcGVjOmNvbmZpZ3M6dXBkYXRlIiwiY29vcGVjOmNvbmZpZzp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczpjb25maWc6bGlzdCIsImNvb3BlYy1jYWlzc2VzOmNvbmZpZzp1cGRhdGUiLCJjb29wZWMtY2Fpc3Nlczpjb25maWc6Y3JlYXRlIiwiY29vcGVjLWNhaXNzZXM6Y29uZmlnOmRlbGV0ZSIsImNvb3BlYy1jYWlzc2VzOmNvdW50ZXJzOmNyZWF0ZSIsImNvb3BlYy1jYWlzc2VzOmNvdW50ZXJzOmxpc3QiLCJjb29wZWMtY2Fpc3Nlczpjb3VudGVyczp1cGRhdGUiLCJjb29wZWM6YWNjb3VudHM6YWNjb3VudHM6bGlzdCJdfQ.Yrv4GligzrY-X0TlnYKvoI_mncS7pklfPZ0QyQ5z1DK9FJwCJbYvus7S3vjiGRbNeJ3fHlgejmxGEC4nyAsqdvAyVNpJgZYGI_0u5VJxOvPkJewoys6k4xF6xqlvSQ5osC6TjUTkdVotoO1ldmD4AVgiTy1vWOUMh1_fzdrhDlwLFpFB_fAMdW8CcVJc8e-XOxXn322w1NfDDBxunawVG5ysy4EZyeSMSJkv8x9rLaOvvvIIkzoygHFjyBlfT_5dYOUZd_lKNrGZyTL1vG14958F1cOj-bDZP8RH_VEnFlcawVipu6J-NSrLUZF7hSgoJ22vDlU6Lvm1ZtXb-LYVI8Jp04zwPIXRqDpdRH2JJ6bqBUDH38Tg9Qpm33LY0lNoLfNRCm3NdTCdUBqgDgO50WR3CfDysALyFTbt5EoIU3eIBFDKzT_CJK5ZeDwlibdlW38WF5ajFb_QyLhoaEPPxQOOejO6wfijhZlO6tGdWiLDJmXKMSF5yeGvcLJVsGMbHTeDNQql6h514EURL_Y6aJQusuqkabodWdRstsxNzrci4zzyCfw5VdJTBQ98LA61ljKTZuZr6m3QJOj5uQegYqtYP8e0XXMeBOrHgt-N4LCcAzuZauiq89txYFtc7b1oFTq6feokBoLsVPOl_3lojgBHY47gODC3Zz66XomriyY"
+        },
+        {
+            "name": "_host",
+            "value": "http://127.0.0.1:8000/api"
+        },
+        {
+            "name": "_id",
+            "value": 1
+        }
+    ],
+    "components": [
+        {
+            "id": "168604696769831",
+            "name": "post types",
+            "description": "/GET post-types",
+            "method": "GET",
+            "url": "[_host]/post-types",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696765992",
+            "name": "post types",
+            "description": "/GET post-types/[_id]",
+            "method": "GET",
+            "url": "[_host]/post-types/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696777494",
+            "name": "post types",
+            "description": "/POST post-types",
+            "method": "POST",
+            "url": "[_host]/post-types",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "label",
+                    "value": "",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "16860469673554",
+            "name": "post types",
+            "description": "/PUT post-types/[_id]",
+            "method": "PUT",
+            "url": "[_host]/post-types/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [
+                {
+                    "name": "label",
+                    "value": "",
+                    "type": "text"
+                }
+            ],
+            "tests": [
+                "[status] eq 200"
+            ]
+        },
+        {
+            "id": "168604696728459",
+            "name": "post types",
+            "description": "/DELETE post-types/[_id]",
+            "method": "DELETE",
+            "url": "[_host]/post-types/[_id]",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer [_bearerToken]"
+                }
+            ],
+            "cookies": [],
+            "params": [],
+            "body": [],
+            "tests": [
+                "[status] eq 200"
+            ]
+        }
+    ]
+}
