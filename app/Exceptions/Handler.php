@@ -10,10 +10,11 @@ use Drewlabs\Validation\Exceptions\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Container\Container;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException as BaseHttpException;
+use Drewlabs\Http\Exceptions\HttpException;
+use Exception;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -27,7 +28,7 @@ class Handler extends ExceptionHandler
         //
         ValidationException::class,
         AuthenticationException::class,
-        AuthorizationException::class
+        AuthorizationException::class,
     ];
 
     /**
@@ -55,15 +56,27 @@ class Handler extends ExceptionHandler
         $this->renderable(function (Throwable $e, Request $request) {
             if ($request->is('api/*')) {
                 if ($e instanceof ValidationException) {
-                    return Container::getInstance()->make(BadRequestResponseFactoryInterface::class)->create($e->getErrors());
+                    return $this->container->make(BadRequestResponseFactoryInterface::class)->create($e->getErrors());
                 }
-                if (($e instanceof AuthorizationException) || ($e instanceof AuthenticationException) || ($e instanceof AccessDeniedHttpException)) {
-                    return Container::getInstance()->make(AuthorizationErrorResponseFactoryInterface::class)->create($request, $e);
+
+                if (($e instanceof AuthorizationException) || ($e instanceof AuthenticationException)) {
+                    return $this->container->make(AuthorizationErrorResponseFactoryInterface::class)->create($request, $e);
                 }
-                if ($e instanceof HttpException){
-                    return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
+
+                if (($e instanceof AccessDeniedHttpException)) {
+                    return $this->container->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
                 }
-                return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create($e);
+
+                if ($e instanceof HttpException || $e instanceof BaseHttpException){
+                    return $this->container->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
+                }
+
+                // Case application is running in production return a Server Error message to the client
+                if (\Illuminate\Foundation\Application::getInstance()->isProduction()) {
+                    return $this->container->make(ServerErrorResponseFactoryInterface::class)->create(new Exception('Server Error', 500));
+                }
+
+                return $this->container->make(ServerErrorResponseFactoryInterface::class)->create($e);
             }
         });
     }
