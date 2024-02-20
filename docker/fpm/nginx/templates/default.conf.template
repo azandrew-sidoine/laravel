@@ -1,0 +1,41 @@
+server {
+    listen          ${PROXY_PORT} default;
+    server_name     ${PROXY_HOST};
+    root            ${APP_DIR}/public;
+    index           index.php index.html index.htm;
+    error_log       /var/log/nginx/error.log;
+    access_log      /var/log/nginx/access.log combined buffer=64k flush=5m ;
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+
+        location ~* ^.+\.(ogg|ogv|svg|svgz|swf|eot|otf|woff|woff2|mov|mp3|mp4|webm|flv|ttf|rss|atom|jpg|jpeg|gif|png|ico|bmp|mid|midi|wav|rtf|css|js|jar)$ {
+            expires 30d;
+            fastcgi_hide_header "Set-Cookie";
+        }
+
+        location ~ [^/]\.php(/|$) {
+            fastcgi_param                 SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            try_files                     $uri =404;
+            fastcgi_pass                  ${PHP_FPM_HOST};
+            fastcgi_index                 index.php;
+            include                       /etc/nginx/fastcgi_params;
+            fastcgi_keep_conn             on;
+            fastcgi_param PATH_INFO       $fastcgi_path_info;
+
+            # Mitigate https://httpoxy.org/ vulnerabilities
+            fastcgi_param HTTP_PROXY "";
+        }
+    }
+
+    location ~* \.(?:ico|css|js|gif|jpe?g|png|ttf|woff)$ {
+        access_log off;
+        expires 30d;
+        add_header Pragma public;
+        add_header Cache-Control "public, mustrevalidate, proxy-revalidate";
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
