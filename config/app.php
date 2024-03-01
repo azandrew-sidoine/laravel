@@ -233,4 +233,15 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Rate Limit
+    |--------------------------------------------------------------------------
+    |
+    | Provides rate limit value on requests coming into the application
+    |
+    */
+    'requests' => [
+        'rate_limit' => env('APP_REQUEST_RATE_LIMIT', 100)
+    ]
 ];
