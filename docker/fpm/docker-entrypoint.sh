@@ -20,12 +20,13 @@ write_php_fpm() {
       echo "listen.owner = www-data"; \
       echo "listen.group = www-data"; \
       echo "ping.path = /ping"; \
+      echo "pm = dynamic"; \
       echo "pm.status_path = /status"; \
       echo "pm.max_children = ${FPM_PM_MAX_CHILDREN:-5}"; \
       echo "pm.start_servers = ${FPM_PM_START_SERVERS:-2}"; \
       echo "pm.min_spare_servers = ${FPM_PM_MIN_SPARE_SERVERS:-1}"; \
-      echo "pm.max_spare_servers = ${FPM_PM_MAX_SPARE_SERVERS:-3}";
-      echo "pm.max_requests = ${FPM_PM_MAX_MAX_REQUESTS:-1000}"
+      echo "pm.max_spare_servers = ${FPM_PM_MAX_SPARE_SERVERS:-3}"; \
+      echo "pm.max_requests = ${FPM_PM_MAX_REQUESTS:-512}";
   } > /usr/local/etc/php-fpm.d/zz-docker.conf
 }
 
