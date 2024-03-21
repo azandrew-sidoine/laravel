@@ -24,6 +24,9 @@ $app = Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
         $middleware->use([
+            // Add a localization middleware which set the application
+            // locale for the current application request
+            \App\Http\Middleware\LocalizationMiddleware::class,
             // \Fruitcake\Cors\HandleCors::class,
             // Add a replacement for fruitcake cors handlers
             \Drewlabs\Laravel\Http\Middleware\Cors::class,
@@ -100,18 +103,18 @@ $app = Application::configure(basePath: dirname(__DIR__))
         });
     })->create();
 
+/*
+|--------------------------------------------------------------------------
+| Modules configuration
+|--------------------------------------------------------------------------
+|
+| We Load into memory configurations for various packages that are specifically
+| not framework dependant. We wait for framework to load environment variable
+| before loading configration as some packages can depends of some environment
+| variables.
+|
+*/
 $app->afterLoadingEnvironment(function () {
-    /*
-    |--------------------------------------------------------------------------
-    | Modules configuration
-    |--------------------------------------------------------------------------
-    |
-    | We Load into memory configurations for various packages that are specifically
-    | not framework dependant. We wait for framework to load environment variable
-    | before loading configration as some packages can depends of some environment
-    | variables.
-    |
-    */
     \Drewlabs\Support\PackagesConfigurationManifest::load(require __DIR__ . '/../config/packages.php');
 });
 
