@@ -6,14 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "drewlabs/laravel-http": "^0.3",
-        "drewlabs/laravel-http-guard": "^0.3",
         "drewlabs/laravel-query": "^0.3",
         "drewlabs/php-value": "^0.3",
         "drewlabs/support": "^0.3",
         "drewlabs/validation": "^0.3",
-        "laravel/framework": "^11.0",
-        "nyholm/psr7": "^1.8"
+        "laravel/framework": "^11.0"
     },
     "require-dev": {
         "drewlabs/g-cli": "^0.2.71",
