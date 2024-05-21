@@ -13,6 +13,9 @@
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "@azlabsjs/built-type": "^0.2.19",
+        "@azlabsjs/smart-form-core": "^0.2.19",
+        "rxjs": "^7.8.1"
     }
 }
