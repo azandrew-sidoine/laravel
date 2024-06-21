@@ -44,7 +44,7 @@ class Repository implements RepositoryInterface
     {
         // Query from configuration from database
         try {
-            $result = $this->factory ? call_user_func($this->factory) : [];
+            $result = $this->factory ? call_user_func($this->factory, $name, $default) : [];
         } catch (\Illuminate\Database\QueryException) {
             $result = [];
         }
