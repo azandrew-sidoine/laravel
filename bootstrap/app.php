@@ -14,6 +14,8 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException as BaseHttpException;
 use Drewlabs\Http\Exceptions\HttpException;
+use Illuminate\Container\Container;
+use Symfony\Component\HttpFoundation\Response;
 
 $app = Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -75,27 +77,27 @@ $app = Application::configure(basePath: dirname(__DIR__))
         $exceptions->renderable(function (Throwable $e, Request $request) {
             if ($request->is('api/*')) {
                 if ($e instanceof ValidationException) {
-                    return $this->container->make(BadRequestResponseFactoryInterface::class)->create($e->getErrors());
+                    return Container::getInstance()->make(BadRequestResponseFactoryInterface::class)->create($e->getErrors());
                 }
 
                 if (($e instanceof AuthorizationException) || ($e instanceof AuthenticationException)) {
-                    return $this->container->make(AuthorizationErrorResponseFactoryInterface::class)->create($request, $e);
+                    return Container::getInstance()->make(AuthorizationErrorResponseFactoryInterface::class)->create($request, $e);
                 }
 
                 if (($e instanceof AccessDeniedHttpException)) {
-                    return $this->container->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
+                    return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
                 }
 
                 if ($e instanceof HttpException || $e instanceof BaseHttpException) {
-                    return $this->container->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
+                    return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
                 }
 
                 // Case application is running in production return a Server Error message to the client
                 if (\Illuminate\Foundation\Application::getInstance()->isProduction()) {
-                    return $this->container->make(ServerErrorResponseFactoryInterface::class)->create(new Exception('Server Error', 500));
+                    return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create(new Exception('Server Error', Response::HTTP_INTERNAL_SERVER_ERROR));
                 }
 
-                return $this->container->make(ServerErrorResponseFactoryInterface::class)->create($e);
+                return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create($e, Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         });
     })->create();
