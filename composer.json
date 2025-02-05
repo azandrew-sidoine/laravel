@@ -14,7 +14,7 @@
     },
     "require-dev": {
         "doctrine/dbal": "^4.0",
-        "drewlabs/g-cli": "^0.3.x-dev",
+        "drewlabs/g-cli": "^0.3.0",
         "laravel/tinker": "^2.9",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
