@@ -1,70 +1,120 @@
 <?php
 
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Configuration\Middleware;
+use Drewlabs\Http\Factory\AuthorizationErrorResponseFactoryInterface;
+use Drewlabs\Http\Factory\BadRequestResponseFactoryInterface;
+use Drewlabs\Http\Factory\ResponseFactoryInterface;
+use Drewlabs\Http\Factory\ServerErrorResponseFactoryInterface;
+use Drewlabs\Validation\Exceptions\ValidationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException as BaseHttpException;
+use Drewlabs\Http\Exceptions\HttpException;
+use Illuminate\Container\Container;
+use Symfony\Component\HttpFoundation\Response;
+
+$app = Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        //
+        $middleware->use([
+            // Add a localization middleware which set the application
+            // locale for the current application request
+            \App\Http\Middleware\LocalizationMiddleware::class,
+            \Drewlabs\Laravel\Http\Middleware\Cors::class,
+            \Illuminate\Http\Middleware\TrustHosts::class,
+            \Illuminate\Http\Middleware\TrustProxies::class,
+            \Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class,
+            \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+            \Illuminate\Foundation\Http\Middleware\TrimStrings::class,
+            \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        ]);
+
+        $middleware->web(append: [
+            // \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            // \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ]);
+
+        $middleware->api(append: [
+            \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ]);
+
+        $middleware->alias([
+            'auth' => \App\Http\Middleware\Authenticate::class,
+            'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+            'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
+            'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+            'can' => \Illuminate\Auth\Middleware\Authorize::class,
+            'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+            'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+            'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        ]);
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+
+        // Laravel errors not to report
+        $exceptions->dontReport([
+            ValidationException::class,
+            AuthenticationException::class,
+            AuthorizationException::class,
+        ]);
+
+        // Laravel error message handlers
+        $exceptions->renderable(function (Throwable $e, Request $request) {
+            if ($request->is('api/*')) {
+                if ($e instanceof ValidationException) {
+                    return Container::getInstance()->make(BadRequestResponseFactoryInterface::class)->create($e->getErrors());
+                }
+
+                if (($e instanceof AuthorizationException) || ($e instanceof AuthenticationException)) {
+                    return Container::getInstance()->make(AuthorizationErrorResponseFactoryInterface::class)->create($request, $e);
+                }
+
+                if (($e instanceof AccessDeniedHttpException)) {
+                    return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
+                }
+
+                if ($e instanceof HttpException || $e instanceof BaseHttpException) {
+                    return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
+                }
+
+                // Case application is running in production return a Server Error message to the client
+                if (\Illuminate\Foundation\Application::getInstance()->isProduction()) {
+                    return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create(new Exception('Server Error', Response::HTTP_INTERNAL_SERVER_ERROR));
+                }
+
+                return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create($e, Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+        });
+    })->create();
+
 /*
 |--------------------------------------------------------------------------
-| Create The Application
+| Modules configuration
 |--------------------------------------------------------------------------
 |
-| The first thing we will do is create a new Laravel application instance
-| which serves as the "glue" for all the components of Laravel, and is
-| the IoC container for the system binding all of the various parts.
+| We Load into memory configurations for various packages that are specifically
+| not framework dependant. We wait for framework to load environment variable
+| before loading configration as some packages can depends of some environment
+| variables.
 |
 */
-
-$app = new Illuminate\Foundation\Application(
-    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-);
-
 $app->afterLoadingEnvironment(function () {
-    /*
-    |--------------------------------------------------------------------------
-    | Modules configuration
-    |--------------------------------------------------------------------------
-    |
-    | We Load into memory configurations for various packages that are specifically
-    | not framework dependant. We wait for framework to load environment variable
-    | before loading configration as some packages can depends of some environment
-    | variables.
-    |
-    */
     \Drewlabs\Support\PackagesConfigurationManifest::load(require __DIR__ . '/../config/packages.php');
 });
-
-/*
-|--------------------------------------------------------------------------
-| Bind Important Interfaces
-|--------------------------------------------------------------------------
-|
-| Next, we need to bind some important interfaces into the container so
-| we will be able to resolve them when needed. The kernels serve the
-| incoming requests to this application from both the web and CLI.
-|
-*/
-
-$app->singleton(
-    Illuminate\Contracts\Http\Kernel::class,
-    App\Http\Kernel::class
-);
-
-$app->singleton(
-    Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
-);
-
-$app->singleton(
-    Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
-);
-
-/*
-|--------------------------------------------------------------------------
-| Return The Application
-|--------------------------------------------------------------------------
-|
-| This script returns the application instance. The instance is given to
-| the calling script so we can separate the building of the instances
-| from the actual running of the application and sending responses.
-|
-*/
 
 return $app;
