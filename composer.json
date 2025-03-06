@@ -16,7 +16,7 @@
         "nyholm/psr7": "^1.8"
     },
     "require-dev": {
-        "drewlabs/g-cli": "^0.2.71",
+        "drewlabs/g-cli": "^0.3.0",
         "laravel/tinker": "^2.9",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
