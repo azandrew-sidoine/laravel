@@ -6,9 +6,7 @@ use Drewlabs\Contracts\Auth\AuthorizationsAware;
 
 class HasAnyAbility
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     private $abilities = [];
 
     /**

@@ -6,9 +6,7 @@ use Drewlabs\Contracts\OAuth\HasApiTokens;
 
 class TokenCanAny
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     private $scopes = [];
 
     /**
