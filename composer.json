@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "drewlabs/http-query": "^0.3.16",
         "drewlabs/laravel-http": "^0.3",
         "drewlabs/laravel-http-guard": "^0.3",
         "drewlabs/laravel-query": "^0.3",
@@ -16,11 +17,12 @@
         "nyholm/psr7": "^1.8"
     },
     "require-dev": {
+        "doctrine/dbal": "^4.2",
         "drewlabs/g-cli": "^0.3.0",
-        "laravel/tinker": "^2.9",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
+        "laravel/tinker": "^2.9",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
         "phpunit/phpunit": "^10.5",
