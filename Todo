@@ -1,1 +1,3 @@
 # Todo
+
+[] Add a docker build using frakenPHP instead of PHP-FPM
