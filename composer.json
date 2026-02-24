@@ -5,7 +5,7 @@
     "keywords": ["laravel", "HTTP", "Api"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "drewlabs/laravel-http": "^0.3",
         "drewlabs/laravel-http-guard": "^0.3",
         "drewlabs/laravel-query": "^0.3",

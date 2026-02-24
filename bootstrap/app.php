@@ -62,8 +62,19 @@ $app = Application::configure(basePath: dirname(__DIR__))
             'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
             'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+            'clients' => \Drewlabs\Laravel\Oauth\Clients\Middleware\Clients::class,
+            'clients.basic' => \Drewlabs\Laravel\Oauth\Clients\Middleware\BasicAuthClients::class,
+            'clients.jwt' => \Drewlabs\Laravel\Oauth\Clients\Middleware\JwtAuthClients::class,
+            'clients.firstparty' => \Drewlabs\Laravel\Oauth\Clients\Middleware\FirstPartyClients::class,
+
+            'before.invoicer-platforms.request' => \App\Http\Middleware\BeforeInvoicerPlatformsRequest::class,
+            'before.transactions.request' => \App\Http\Middleware\BeforeTransactionRequest::class
         ]);
     })
+    ->withCommands([
+        __DIR__ . '/app/Console/Commands'
+    ])
     ->withExceptions(function (Exceptions $exceptions) {
 
         // Laravel errors not to report
