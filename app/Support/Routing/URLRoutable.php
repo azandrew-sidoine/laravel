@@ -5,7 +5,7 @@ namespace App\Support\Routing;
 interface URLRoutable
 {
     /**
-     * Returns the url to the routable resource
+     * returns the url to the routable resource
      * 
      * @return string 
      */

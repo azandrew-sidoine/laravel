@@ -51,7 +51,7 @@ class URL
      * @throws BindingResolutionException 
      * @throws RuntimeException 
      */
-    public static function signedRoute(string $name, $parameters = [], bool $absolute = true, callable $resolveKeyFn = null)
+    public static function signedRoute(string $name, $parameters = [], bool $absolute = true, ?callable $resolveKeyFn = null)
     {
         $url = static::route($name, $parameters, $absolute);
         return URI::withSignature($url, null === $resolveKeyFn ? function () {
