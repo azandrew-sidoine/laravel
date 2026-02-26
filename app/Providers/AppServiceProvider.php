@@ -7,6 +7,7 @@ use Drewlabs\Contracts\Validator\ValidatorFactory;
 use Drewlabs\Laravel\Http\JsonApiProvider;
 use Drewlabs\Validation\ValidatorAdapter;
 use Illuminate\Contracts\Validation\Factory;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -56,6 +57,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        // comment the code below to support unsecure request
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 
 

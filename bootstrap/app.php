@@ -1,5 +1,6 @@
 <?php
 
+use App\Exceptions\ScopesException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -24,21 +25,32 @@ $app = Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
-        $middleware->use([
-            // Add a localization middleware which set the application
-            // locale for the current application request
-            \App\Http\Middleware\LocalizationMiddleware::class,
-            \Drewlabs\Laravel\Http\Middleware\Cors::class,
-            \Illuminate\Http\Middleware\TrustHosts::class,
-            \Illuminate\Http\Middleware\TrustProxies::class,
-            \Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class,
-            \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-            \Illuminate\Foundation\Http\Middleware\TrimStrings::class,
-            \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        ]);
-
-        $middleware->web(append: [
+        if (!is_null($hosts = env('TRUSTED_HOSTS', null))) {
+            $middleware = $middleware->trustHosts(explode(',', $hosts));
+        }
+        return $middleware->trustProxies(
+            explode(',', env('TRUSTED_PROXIES', '*')),
+            env('TRUSTED_HEADER', \Illuminate\Http\Request::HEADER_X_FORWARDED_FOR |
+                \Illuminate\Http\Request::HEADER_X_FORWARDED_HOST |
+                \Illuminate\Http\Request::HEADER_X_FORWARDED_PORT |
+                \Illuminate\Http\Request::HEADER_X_FORWARDED_PROTO |
+                \Illuminate\Http\Request::HEADER_X_FORWARDED_AWS_ELB)
+        )->use(
+            array_merge(
+                [
+                    // Add a localization middleware which set the application
+                    // locale for the current application request
+                    \App\Http\Middleware\LocalizationMiddleware::class,
+                    \Drewlabs\Laravel\Http\Middleware\Cors::class,
+                    \Illuminate\Http\Middleware\TrustProxies::class,
+                    \Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class,
+                    \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+                    \Illuminate\Foundation\Http\Middleware\TrimStrings::class,
+                    \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+                ],
+                !is_null($hosts) ? [\Illuminate\Http\Middleware\TrustHosts::class] : []
+            )
+        )->web(append: [
             // \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
@@ -46,14 +58,10 @@ $app = Application::configure(basePath: dirname(__DIR__))
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             // \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ]);
-
-        $middleware->api(append: [
+        ])->api(append: [
             \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ]);
-
-        $middleware->alias([
+        ])->alias([
             'auth' => \App\Http\Middleware\Authenticate::class,
             'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
             'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -61,15 +69,8 @@ $app = Application::configure(basePath: dirname(__DIR__))
             'can' => \Illuminate\Auth\Middleware\Authorize::class,
             'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-            'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+            // 'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-            'clients' => \Drewlabs\Laravel\Oauth\Clients\Middleware\Clients::class,
-            'clients.basic' => \Drewlabs\Laravel\Oauth\Clients\Middleware\BasicAuthClients::class,
-            'clients.jwt' => \Drewlabs\Laravel\Oauth\Clients\Middleware\JwtAuthClients::class,
-            'clients.firstparty' => \Drewlabs\Laravel\Oauth\Clients\Middleware\FirstPartyClients::class,
-
-            'before.invoicer-platforms.request' => \App\Http\Middleware\BeforeInvoicerPlatformsRequest::class,
-            'before.transactions.request' => \App\Http\Middleware\BeforeTransactionRequest::class
         ]);
     })
     ->withCommands([
@@ -109,6 +110,11 @@ $app = Application::configure(basePath: dirname(__DIR__))
                 }
 
                 return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create($e, Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            if (app()->environment('production')) {
+                \Illuminate\Support\Facades\Log::error($e->getMessage());
+                return new \Illuminate\Http\Response('Server error', 500);
             }
         });
     })->create();
