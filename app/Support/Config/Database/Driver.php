@@ -2,10 +2,11 @@
 
 namespace App\Support\Config\Database;
 
-use App\Support\Config\Contracts\Driver as AbstractDriver;
-use App\Support\Config\NoSymbol;
-use App\Support\Lang\Value;
+use Drewlabs\Support\Lang\Value;
 use Drewlabs\Laravel\Query\Query;
+use Drewlabs\Support\Config\Contracts\Driver as AbstractDriver;
+use Drewlabs\Support\Config\None;
+
 
 final class Driver implements AbstractDriver
 {
@@ -13,28 +14,23 @@ final class Driver implements AbstractDriver
 
     public function get(string $name)
     {
-        $result = [];
+        $items = [];
         try {
-            $result = Query::new()
-                ->fromTable($this->table)->select(['*'])->and('name', $name)->getResult();
-        } catch (\Illuminate\Database\QueryException) {
+            $items = Query::new()->fromTable($this->table)->select(['*'])->and('name', $name)->getResult();
+        } catch (\Illuminate\Database\QueryException) { }
+
+        if (empty($items)) {
+            return new None;
         }
 
-        if (empty($result)) {
-            return new NoSymbol;
+        if (count($items) > 1) {
+            return array_values(array_map(fn($current) => Value::new($current['value'], $current['value_type'] ?? $current['type'] ?? null)->decode(), $items));
         }
 
-        // collection of configuration values
-        if (count($result) > 1) {
-            return array_values(array_map(function ($current) {
-                return Value::new($current['value'], $current['value_type'] ?? $current['type'] ?? null)->decode();
-            }, $result));
+        if (!is_null($value = $items[0] ?? null)) {
+            return Value::new($value['value'], $value['value_type'] ?? $value['type'] ?? null)->decode();
         }
 
-        if (!is_null($instance = $result[0] ?? null)) {
-            return Value::new($instance['value'], $instance['value_type'] ?? $instance['type'] ?? null)->decode();
-        }
-
-        return new NoSymbol;
+        return new None;
     }
 }
