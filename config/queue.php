@@ -108,4 +108,16 @@ return [
         'database' => env('DB_CONNECTION', 'sqlite'),
         'table' => 'failed_jobs',
     ],
+    
+    // rabbit mq configurations
+    'rabbit' => [
+        'driver' => 'rabbit',
+        'queue' => 'default',
+        'host' => env('RABBIT_MQ_HOST', '127.0.0.1'),
+        'port' => env('RABBIT_MQ_PORT', 5672),
+        'user' => env('RABBIT_MQ_USER', 'guest'),
+        'password' => env('RABBIT_MQ_PASSWORD', 'guest'),
+        'vhost' => env('RABBIT_MQ_VHOST', '/'),
+        'options' => []
+    ]
 ];

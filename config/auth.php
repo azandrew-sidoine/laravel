@@ -70,16 +70,30 @@ return [
         ],
 
         'http' => [
-            // Model class to be used by the package providers
+            // model class to be used by the package providers
             'model' => \Drewlabs\HttpGuard\User::class,
-            // For Http request we must define the endpoint where is located the
-            // authorization server(s)
-            'hosts' => [
-                // When not using a cluster of servers, this default host is used
-                'default' => env('AUTH_GUARD_HTTP_HOST', 'http://localhost:4300'),
 
-                // Cluster of servers to be used for authentication
+            //# TODO: uncomment the code below to use legacy authenticatable provider
+            // 'provider' => \Drewlabs\HttpGuard\AuthenticatableProvider::class,
+
+            // for http requests we must define the endpoint where is located the authorization server(s)
+            'hosts' => [
+                // when not using a cluster of servers, this default host is used
+                'primary' => env('AUTH_GUARD_HTTP_HOST', 'http://localhost:4300'),
+
+                // cluster of servers to be used for authentication
                 'cluster' => []
+            ],
+
+            'oauth2' => [
+                'client_id' => env('OAUTH_CLIENT_ID'),
+                'client_secret' => env('OAUTH_CLIENT_SECRET'),
+
+                'paths' => [
+                    'me' => env('OAUTH_ME_PATH', 'auth/api/me'),
+                    'token' => env('OAUTH_TOKEN_PATH', 'oauth/token'),
+                    'revoke' => env('OAUTH_REVOKE_TOKEN_PATH', 'oauth/revoke')
+                ]
             ]
         ]
     ],

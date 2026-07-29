@@ -15,9 +15,7 @@ final class Driver implements AbstractDriver
     public function get(string $name)
     {
         $items = [];
-        try {
-            $items = Query::new()->fromTable($this->table)->select(['*'])->and('name', $name)->getResult();
-        } catch (\Illuminate\Database\QueryException) { }
+        try { $items = Query::new()->fromTable($this->table)->select(['*'])->and('name', $name)->getResult(); } catch (\Illuminate\Database\QueryException) { }
 
         if (empty($items)) {
             return new None;
