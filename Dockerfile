@@ -168,7 +168,7 @@ RUN pecl install msgpack \
     && rm -rf /tmp/*
 
 # Install ldap extension
-RUN apk add ldb-dev libldap openldap-dev \
+RUN apk add samba-dev libldap openldap-dev \
     && docker-php-ext-configure ldap \
     && docker-php-ext-install ldap \
     && docker-php-ext-enable  ldap
