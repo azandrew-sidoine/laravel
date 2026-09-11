@@ -43,7 +43,8 @@ RUN mkdir ${APP_DIR}/.opcache
 
 RUN apk add --no-cache --update zlib-dev \
     libmemcached-libs zlib libzip-dev bzip2-dev \
-    make openssl-dev libcap supervisor procps
+    make openssl-dev libcap supervisor procps \
+    postgresql-dev
 
 # Install gosu binary
 ENV GOSU_VERSION 1.12
@@ -168,14 +169,14 @@ RUN pecl install msgpack \
     && rm -rf /tmp/*
 
 # Install ldap extension
-RUN apk add samba-dev libldap openldap-dev \
+RUN apk add --no-cache samba-dev libldap openldap-dev \
     && docker-php-ext-configure ldap \
     && docker-php-ext-install ldap \
     && docker-php-ext-enable  ldap
 
 # Enable pdo extensions
-RUN docker-php-ext-install zip exif pcntl pdo_mysql bcmath sockets \
-    && docker-php-ext-enable pdo_mysql zip exif pcntl bcmath sockets \
+RUN docker-php-ext-install zip exif pcntl pdo_mysql pgsql pdo_pgsql bcmath sockets \
+    && docker-php-ext-enable pdo_mysql pgsql pdo_pgsql zip exif pcntl bcmath sockets \
     && rm -rf /tmp/*
 
 
