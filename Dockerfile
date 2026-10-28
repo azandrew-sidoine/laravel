@@ -16,7 +16,6 @@ ENV APP_DIR=/var/www/html
 ENV BIN_DIR=${APP_DIR}/.bin
 # ENV COMPOSER_GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN}
 
-# Nginx http server environment variables
 ENV PROXY_HOST=app
 ENV PROXY_PORT=${PROXY_PORT}
 

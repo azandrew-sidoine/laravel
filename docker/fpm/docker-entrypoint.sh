@@ -91,8 +91,9 @@ auto_envsubst() {
 }
 
 
-echo "Rewriting storage permissions..."
-chmod -R 775 ${APP_DIR}/storage
+echo "Setting storage permissions..."
+chmod -R 775 ${APP_DIR}/storage/framework
+chmod -R 775 ${APP_DIR}/storage/logs
 
 # Calling auto_envsubst to compile nginx templates
 auto_envsubst

@@ -6,21 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "drewlabs/http-query": "^0.4.0",
-        "drewlabs/laravel-http": "^0.4.0",
-        "drewlabs/laravel-http-guard": "^0.4.0",
         "drewlabs/laravel-query": "^0.4.0",
         "drewlabs/support": "^0.4.0",
         "drewlabs/validation": "^0.4.0",
         "drewlabs/php-value": "^0.3.0",
         "laravel/framework": "^13.0",
-        "nyholm/psr7": "^1.8",
-        "php-amqplib/php-amqplib": "^3.7"
+        "nyholm/psr7": "^1.8"
     },
     "require-dev": {
-        "doctrine/dbal": "^4.2",
         "drewlabs/g-cli": "^0.4.0",
-        "laravel/sail": "^1.69",
         "laravel/tinker": "^3.0",
         "phpunit/phpunit": "^13.0",
         "fakerphp/faker": "^1.23",
