@@ -1,6 +1,6 @@
 <?php
 
-use App\Exceptions\ScopesException;
+// use App\Exceptions\ScopesException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,18 +16,20 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException as BaseHttpException;
 use Drewlabs\Http\Exceptions\HttpException;
 use Illuminate\Container\Container;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Response;
+
 
 $app = Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__ . '/../routes/web.php',
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
-    )
-    ->withMiddleware(function (Middleware $middleware) {
+    )->withMiddleware(function (Middleware $middleware) {
         if (!is_null($hosts = env('TRUSTED_HOSTS', null))) {
             $middleware = $middleware->trustHosts(explode(',', $hosts));
         }
+        
         return $middleware->trustProxies(
             explode(',', env('TRUSTED_PROXIES', '*')),
             env('TRUSTED_HEADER', \Illuminate\Http\Request::HEADER_X_FORWARDED_FOR |
@@ -38,8 +40,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
         )->use(
             array_merge(
                 [
-                    // Add a localization middleware which set the application
-                    // locale for the current application request
+                    // Add a localization middleware which set the application locale for the current application request
                     \App\Http\Middleware\LocalizationMiddleware::class,
                     \Drewlabs\Laravel\Http\Middleware\Cors::class,
                     \Illuminate\Http\Middleware\TrustProxies::class,
@@ -73,19 +74,19 @@ $app = Application::configure(basePath: dirname(__DIR__))
 
         ]);
     })
-    ->withCommands([
-        __DIR__ . '/app/Console/Commands'
-    ])
+    ->withCommands([__DIR__ . '/app/Console/Commands'])
     ->withExceptions(function (Exceptions $exceptions) {
 
-        // Laravel errors not to report
+        $exceptions->shouldRenderJsonWhen(
+            fn(Request $request) => $request->is('api/*') || $request->expectsJson(),
+        );
+
         $exceptions->dontReport([
             ValidationException::class,
             AuthenticationException::class,
             AuthorizationException::class,
         ]);
 
-        // Laravel error message handlers
         $exceptions->renderable(function (Throwable $e, Request $request) {
             if ($request->is('api/*')) {
                 if ($e instanceof ValidationException) {
@@ -104,7 +105,6 @@ $app = Application::configure(basePath: dirname(__DIR__))
                     return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
                 }
 
-                // Case application is running in production return a Server Error message to the client
                 if (\Illuminate\Foundation\Application::getInstance()->isProduction()) {
                     return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create(new Exception('Server Error', Response::HTTP_INTERNAL_SERVER_ERROR));
                 }
@@ -113,8 +113,9 @@ $app = Application::configure(basePath: dirname(__DIR__))
             }
 
             if (app()->environment('production')) {
-                \Illuminate\Support\Facades\Log::error($e->getMessage());
-                return new \Illuminate\Http\Response('Server error', 500);
+                Log::error($e->getMessage());
+
+                return new Response('Server error', 500);
             }
         });
     })->create();

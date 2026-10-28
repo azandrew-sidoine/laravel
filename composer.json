@@ -13,22 +13,25 @@
         "drewlabs/support": "^0.4.0",
         "drewlabs/validation": "^0.4.0",
         "drewlabs/php-value": "^0.3.0",
-        "laravel/framework": "^11.0 | ^12.0",
+        "laravel/framework": "^13.0",
         "nyholm/psr7": "^1.8",
         "php-amqplib/php-amqplib": "^3.7"
     },
     "require-dev": {
         "doctrine/dbal": "^4.2",
-        "drewlabs/g-cli": "dev-master",
+        "drewlabs/g-cli": "^0.4.0",
+        "laravel/sail": "^1.69",
+        "laravel/tinker": "^3.0",
+        "phpunit/phpunit": "^13.0",
         "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
-        "laravel/tinker": "^2.9",
+        "laravel/boost": "^2.2",
+        "laravel/pail": "^1.2.5",
+        "laravel/pao": "^1.0.6",
+        "laravel/pint": "^1.27",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^10.5 | ^11.0",
-        "spatie/laravel-ignition": "^2.4",
-        "pestphp/pest": " ^2.0|^3.0"
+        "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^5.3",
+        "pestphp/pest-plugin-laravel": "^5.0"
     },
     "autoload": {
         "psr-4": {
