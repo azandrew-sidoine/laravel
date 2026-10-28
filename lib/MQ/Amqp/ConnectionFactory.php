@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\MQ\Amqp;
+namespace Lib\MQ\Amqp;
 
 class ConnectionFactory
 {

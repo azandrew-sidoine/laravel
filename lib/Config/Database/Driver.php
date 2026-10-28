@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\Config\Database;
+namespace Lib\Config\Database;
 
 use Drewlabs\Support\Lang\Value;
 use Drewlabs\Laravel\Query\Query;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Support\MQ\Amqp;
+namespace Lib\MQ\Amqp;
 
-use App\Support\MQ\Contracts\MessageInterface;
+use Lib\MQ\Contracts\MessageInterface;
 use PhpAmqpLib\Message\AMQPMessage;
 
 class Message implements MessageInterface
