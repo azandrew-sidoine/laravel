@@ -3,7 +3,7 @@
 return [
 
         /*
-         * Package Service Providers...
+         * packages service Providers...
          */
 
         /*
@@ -14,6 +14,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // App\Providers\ServiceProvider::class,
-        App\Support\Config\ServiceProvider::class,
+        Lib\Config\ServiceProvider::class,
+        Lib\MQ\ServiceProvider::class,
 ];

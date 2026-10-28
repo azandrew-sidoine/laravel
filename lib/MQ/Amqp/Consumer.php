@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Support\MQ\Amqp;
+namespace Lib\MQ\Amqp;
 
-use App\Support\MQ\Contracts\ConnectionInterface;
+use Lib\MQ\Contracts\ConnectionInterface;
 use Closure;
 use PhpAmqpLib\Exception\AMQPConnectionClosedException;
 use PhpAmqpLib\Exception\AMQPRuntimeException;
