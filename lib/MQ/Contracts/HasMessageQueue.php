@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\MQ\Contracts;
+namespace Lib\MQ\Contracts;
 
 interface HasMessageQueue
 {

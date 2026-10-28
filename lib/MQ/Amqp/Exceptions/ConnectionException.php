@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\MQ\Amqp\Exceptions;
+namespace Lib\MQ\Amqp\Exceptions;
 
 use Exception;
 use Throwable;

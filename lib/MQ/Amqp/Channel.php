@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Support\MQ\Amqp;
+namespace Lib\MQ\Amqp;
 
-use App\Support\MQ\Contracts\ChannelInterface;
-use App\Support\MQ\Contracts\MessageInterface;
-use App\Support\MQ\Amqp\Exceptions\ChannelException;
+use Lib\MQ\Contracts\ChannelInterface;
+use Lib\MQ\Contracts\MessageInterface;
+use Lib\MQ\Amqp\Exceptions\ChannelException;
 use BadMethodCallException;
 use Closure;
 use Override;

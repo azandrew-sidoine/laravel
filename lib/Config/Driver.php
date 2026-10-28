@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\Config;
+namespace Lib\Config;
 
 use Drewlabs\Support\Config\Contracts\Driver as AbstractDriver;
 use Drewlabs\Support\Config\None;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\Config;
+namespace Lib\Config;
 
 use Drewlabs\Support\Config\RepositoryInterface;
 use Illuminate\Support\Facades\Facade;

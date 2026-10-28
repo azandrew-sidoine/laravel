@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\Config\Http;
+namespace Lib\Config\Http;
 
 use Drewlabs\Query\Http\Query;
 use Drewlabs\Support\Lang\Value;

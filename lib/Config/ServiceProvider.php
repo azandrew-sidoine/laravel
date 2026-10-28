@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Support\Config;
+namespace Lib\Config;
 
-use App\Support\Config\Database\Driver as DatabaseDriver;
-use App\Support\Config\Http\Driver as HttpDriver;
+use Lib\Config\Database\Driver as DatabaseDriver;
+use Lib\Config\Http\Driver as HttpDriver;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use App\Support\Config\Driver as ConfigDriver;
+use Lib\Config\Driver as ConfigDriver;
 use Drewlabs\Support\Config\Repository;
 use Drewlabs\Support\Config\RepositoryInterface;
 
