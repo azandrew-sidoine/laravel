@@ -1,26 +1,13 @@
 <?php
 
-use App\Exceptions\ScopesException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Drewlabs\Http\Factory\AuthorizationErrorResponseFactoryInterface;
-use Drewlabs\Http\Factory\BadRequestResponseFactoryInterface;
-use Drewlabs\Http\Factory\ResponseFactoryInterface;
-use Drewlabs\Http\Factory\ServerErrorResponseFactoryInterface;
-use Drewlabs\Validation\Exceptions\ValidationException;
-use Illuminate\Auth\Access\AuthorizationException;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\HttpException as BaseHttpException;
-use Drewlabs\Http\Exceptions\HttpException;
-use Illuminate\Container\Container;
-use Symfony\Component\HttpFoundation\Response;
 
 $app = Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__ . '/../routes/web.php',
+        // web: __DIR__ . '/../routes/web.php', // uncomment for web routes
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
@@ -40,8 +27,6 @@ $app = Application::configure(basePath: dirname(__DIR__))
                 [
                     // Add a localization middleware which set the application
                     // locale for the current application request
-                    \App\Http\Middleware\LocalizationMiddleware::class,
-                    \Drewlabs\Laravel\Http\Middleware\Cors::class,
                     \Illuminate\Http\Middleware\TrustProxies::class,
                     \Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class,
                     \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
@@ -62,13 +47,8 @@ $app = Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ])->alias([
-            'auth' => \App\Http\Middleware\Authenticate::class,
-            'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-            'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
-            'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-            'can' => \Illuminate\Auth\Middleware\Authorize::class,
-            'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
-            'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+            // 'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
+            // 'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
             // 'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         ]);
@@ -78,44 +58,12 @@ $app = Application::configure(basePath: dirname(__DIR__))
     ])
     ->withExceptions(function (Exceptions $exceptions) {
 
-        // Laravel errors not to report
-        $exceptions->dontReport([
-            ValidationException::class,
-            AuthenticationException::class,
-            AuthorizationException::class,
-        ]);
+        $exceptions->dontReport([]);
 
         // Laravel error message handlers
         $exceptions->renderable(function (Throwable $e, Request $request) {
-            if ($request->is('api/*')) {
-                if ($e instanceof ValidationException) {
-                    return Container::getInstance()->make(BadRequestResponseFactoryInterface::class)->create($e->getErrors());
-                }
-
-                if (($e instanceof AuthorizationException) || ($e instanceof AuthenticationException)) {
-                    return Container::getInstance()->make(AuthorizationErrorResponseFactoryInterface::class)->create($request, $e);
-                }
-
-                if (($e instanceof AccessDeniedHttpException)) {
-                    return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
-                }
-
-                if ($e instanceof HttpException || $e instanceof BaseHttpException) {
-                    return Container::getInstance()->make(ResponseFactoryInterface::class)->create(sprintf("/%s %s %s", strtoupper($request->method()), $request->path(), $e->getMessage()), intval($e->getStatusCode()), $e->getHeaders());
-                }
-
-                // Case application is running in production return a Server Error message to the client
-                if (\Illuminate\Foundation\Application::getInstance()->isProduction()) {
-                    return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create(new Exception('Server Error', Response::HTTP_INTERNAL_SERVER_ERROR));
-                }
-
-                return Container::getInstance()->make(ServerErrorResponseFactoryInterface::class)->create($e, Response::HTTP_INTERNAL_SERVER_ERROR);
-            }
-
-            if (app()->environment('production')) {
-                \Illuminate\Support\Facades\Log::error($e->getMessage());
-                return new \Illuminate\Http\Response('Server error', 500);
-            }
+            \Illuminate\Support\Facades\Log::error($e->getMessage());
+            return new \Illuminate\Http\Response('Server error', 500);
         });
     })->create();
 
@@ -130,8 +78,6 @@ $app = Application::configure(basePath: dirname(__DIR__))
 | variables.
 |
 */
-$app->afterLoadingEnvironment(function () {
-    \Drewlabs\Support\PackagesConfigurationManifest::load(require __DIR__ . '/../config/packages.php');
-});
+$app->afterLoadingEnvironment(function () { });
 
 return $app;
